@@ -1,0 +1,47 @@
+Customer_ID,Name,DOB,PAN,Email,Phone,Address,Segment,KYC_Status,Onboarding_Date
+CUST_00094,Shreya Mehta,1973-11-25,YPBQU1554G,shreyamehta.94@yahoo.com,919418166211,"29, Station Road",Mass Retail,Completed,2027-05-06
+CUST_00445,Aarav Agarwal,1960-11-03,LGFXN5843X,aaravagarwal.445@yahoo.com,917039436307,"813, Lake View Road",Mass Retail,Completed,2027-05-02
+CUST_00824,Srinivas Naidu,1999-05-24,QJFQU4253Z,srinivasnaidu.824@apexbankmail.com,916071699434,"472, Park Street",Mass Retail,Completed,2027-06-29
+CUST_00934,Sneha Choudhary,1954-06-10,LVKXO2590K,snehachoudhary.934@gmail.com,916922822064,"416, Lake View Road",Mass Retail,,2026-12-04
+CUST_01180,Srinivas Kulkarni,1990-02-16,EOBIZ5990P,srinivaskulkarni.1180@yahoo.com,919491191167,"200, Park Street",Privileged,Completed,2026-09-19
+CUST_01615,Charan Gupta,1966-09-21,YVBIY1099K,charangupta.1615@apexbankmail.com,919061043272,"317, MG Road",Mass Retail,Completed,2027-04-26
+CUST_01655,Ishita Verma,1983-03-25,GLLQY3266J,ishitaverma.1655@gmail.com,917785765729,"669, Park Street",Mass Retail,Completed,2026-12-30
+CUST_01826,Deepa Verma,1993-11-20,UXFCJ9184J,deepaverma.1826@gmail.com,918749046249,"496, MG Road",Mass Retail,Completed,2026-12-05
+CUST_02067,Aditi Iyer,1970-07-25,OILZJ1293N,aditiiyer.2067@yahoo.com,919985511356,"614, Lake View Road",Mass Retail,Completed,2027-05-18
+CUST_02480,Gaurav Patel,1974-01-02,LJAWP1575N,gauravpatel.2480@outlook.com,918175170962,"266, MG Road",Mass Retail,Completed,2026-12-06
+CUST_02783,Nandini Choudhary,1971-12-19,QDEDP9063E,nandinichoudhary.2783@gmail.com,918987185059,"287, MG Road",Mass Retail,Completed,2026-10-28
+CUST_02840,Varun Nair,1988-09-23,DLISX5152X,varunnair.2840@gmail.com,918023726998,"195, Market Road",Mass Retail,Completed,2027-08-01
+CUST_03029,Mohan Mishra,1984-06-04,WUTUU3639M,mohanmishra.3029@outlook.com,918769117627,"401, MG Road",Mass Retail,Completed,2027-01-15
+CUST_03298,Manish Iyer,2003-02-07,YROIH7644C,manishiyer.3298@apexbankmail.com,917150874281,"495, Park Street",Wealth,Completed,2027-05-25
+CUST_03473,Vikas Agarwal,1961-10-28,MVXIY1540A,vikasagarwal.3473@gmail.com,917032211413,"129, Park Street",Mass Retail,Completed,2027-04-13
+CUST_03951,Aarav Mehta,1989-03-25,RXNDM3784R,aaravmehta.3951@apexbankmail.com,919707864807,"173, Lake View Road",Privileged,Completed,2026-12-28
+CUST_04481,Aditya Verma,1960-09-14,SEVWK1369R,adityaverma.4481@yahoo.com,919309390612,"21, MG Road",Privileged,Completed,2026-12-14
+CUST_04496,Aditya Mishra,1965-05-02,HJNSP5212A,adityamishra.4496@yahoo.com,917325764968,"575, Market Road",Wealth,Completed,2027-03-22
+CUST_04799,Nikhil Mehta,1974-10-21,DKKWH2803Y,nikhilmehta.4799@outlook.com,919978532972,"747, Lake View Road",Mass Retail,Pending,2026-11-16
+CUST_04839,Rohan Mehta,1965-12-01,KLBYU5580X,rohanmehta.4839@gmail.com,916929687190,"971, Station Road",Mass Retail,Completed,2026-11-30
+CUST_05116,Vivek Mishra,1952-10-17,MYNCF8873U,vivekmishra.5116@gmail.com,916000416647,"4, Station Road",Privileged,Completed,2027-06-23
+CUST_05344,Pranav Mehta,1948-01-02,RGRIK1101H,pranavmehta.5344@apexbankmail.com,917482558137,"465, Station Road",Mass Retail,Completed,2026-11-10
+CUST_05447,Ananya Reddy,1974-10-16,VUFUE4252K,ananyareddy.5447@outlook.com,919933481450,"55, Station Road",Privileged,Completed,2027-01-06
+CUST_05546,Mohan Agarwal,1982-07-23,DWPWJ1682J,mohanagarwal.5546@outlook.com,916403936192,"222, Lake View Road",Mass Retail,Completed,2027-05-11
+CUST_05559,Bhavya Sharma,1949-08-05,HBBQF2849R,bhavyasharma.5559@apexbankmail.com,917608371866,"154, MG Road",Mass Retail,Completed,2026-11-02
+CUST_05604,Rohan Kumar,1954-09-07,OBGER9287N,rohankumar.5604@apexbankmail.com,916169356300,"485, MG Road",Mass Retail,Completed,2027-03-26
+CUST_05681,Mohan Verma,1950-05-19,SWRRQ7254O,mohanverma.5681@outlook.com,917237876175,"106, Market Road",Wealth,Completed,2026-11-25
+CUST_06116,Deepa Sharma,1990-01-06,PFJMZ6029Q,deepasharma.6116@yahoo.com,918028914943,"230, Lake View Road",Mass Retail,Completed,2027-01-15
+CUST_06142,Yash Iyer,1985-02-27,RELUQ8501U,yashiyer.6142@outlook.com,919819772291,"625, Station Road",Mass Retail,Completed,2027-07-17
+CUST_06634,Harish Choudhary,1954-09-07,HAQFL7903R,harishchoudhary.6634@outlook.com,917079642339,"692, Station Road",Mass Retail,Completed,2026-11-27
+CUST_06655,Raj Singh,1980-01-23,CVDVE3953C,rajsingh.6655@outlook.com,916340989969,"942, Market Road",Mass Retail,Pending,2027-04-30
+CUST_06687,Arvind Verma,1995-02-14,UNNWP3451I,arvindverma.6687@gmail.com,917407722960,"129, Market Road",Mass Retail,Completed,2027-03-30
+CUST_06688,Arvind Verma,1960-11-11,PCSXE9107H,arvindverma.6688@apexbankmail.com,918694470464,"812, MG Road",Mass Retail,Completed,2027-01-14
+CUST_06748,Srinivas Sharma,1976-10-26,KVJUX8606B,srinivassharma.6748@apexbankmail.com,916774446671,"196, Station Road",Mass Retail,Completed,2026-11-01
+CUST_07078,Karan Verma,2000-07-12,UMDUU4742Q,karanverma.7078@outlook.com,918586081792,"20, Park Street",Mass Retail,Pending,2027-08-03
+CUST_07302,Vikas Joshi,1948-12-12,ACGAC2770G,vikasjoshi.7302@apexbankmail.com,918490944802,"544, Market Road",Privileged,Completed,2027-03-31
+CUST_08038,Nikhil Naidu,1984-12-06,RURMR9432J,nikhilnaidu.8038@yahoo.com,916165119979,"169, Market Road",Mass Retail,Completed,2026-10-24
+CUST_08097,Mohan Nair,1956-10-03,HZHEU1697O,mohannair.8097@yahoo.com,919664025841,"431, Lake View Road",Mass Retail,Completed,2026-11-23
+CUST_08106,Pranav Choudhary,1999-10-22,QHIWL8363R,pranavchoudhary.8106@yahoo.com,918746991267,"454, Park Street",Mass Retail,Completed,2027-06-29
+CUST_08342,Sanjay Singh,1970-10-02,IBNNG2601C,sanjaysingh.8342@outlook.com,918851753256,"279, MG Road",Mass Retail,Completed,2027-03-03
+CUST_08401,Vikas Gupta,1983-07-14,CUIEF5178C,vikasgupta.8401@apexbankmail.com,917560545958,"275, Park Street",Mass Retail,Completed,2027-07-14
+CUST_08519,Harish Rao,1977-09-27,NCRGN4223H,harishrao.8519@apexbankmail.com,917174404750,"733, Station Road",Mass Retail,Completed,2027-06-06
+CUST_08616,Bhavya Patel,1971-06-01,YXDQO3239N,bhavyapatel.8616@yahoo.com,917920014453,"417, Station Road",Mass Retail,Completed,2027-04-18
+CUST_08903,Lakshmi Kulkarni,2004-12-12,SJUVQ2554O,lakshmikulkarni.8903@gmail.com,916318848598,"911, Lake View Road",Mass Retail,Completed,2027-01-20
+CUST_09023,Kavya Mishra,1948-12-10,VEUNA3179K,kavyamishra.9023@gmail.com,918420575985,"670, Park Street",Mass Retail,Completed,2027-06-26
+CUST_10106,Pooja Menon,2001-07-25,NSNKV1189W,poojamenon.6387.duplicate@gmail.com,918710335884,"426, Park Street",Wealth,Completed,2027-04-16

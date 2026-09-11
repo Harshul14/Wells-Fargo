@@ -1,0 +1,4 @@
+Segment,Total_Customers,High_Risk_Customers,High_Value_Customers,High_Value_At_Risk,Total_Portfolio_Balance,Avg_Balance,Avg_Risk_Score,Total_Debit_Outflow,Total_Complaints,Avg_CSAT,Avg_Days_Inactive,Risk_Rate_Pct,Balance_At_Risk,Balance_At_Risk_Pct
+Mass Retail,7236,1115,25,13,281239478.26,38866.71,41.47,334323308.25,8471.0,3.75,117.68,15.41,79364815.36,28.22
+Privileged,2099,824,135,77,378268348.58,180213.6,47.48,2947495128.09,2507.0,3.62,116.88,39.26,196654822.25,51.99
+Wealth,865,463,865,463,651349037.75,753004.67,50.76,1174215080.06,1022.0,3.71,115.47,53.53,397323737.64,61.0

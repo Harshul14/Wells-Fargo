@@ -1,0 +1,103 @@
+Customer_ID,Name,DOB,PAN,Email,Phone,Address,Segment,KYC_Status,Onboarding_Date
+CUST_00084,Deepa Kumar,1984-06-12,ZZIZY1378H,missingdomain,919689668667,"980, Park Street",Mass Retail,Completed,2024-08-02
+CUST_00314,Yash Gupta,2001-07-23,OTNXD9972S,invalid-email,919329470564,"49, Park Street",Mass Retail,Failed,2021-01-05
+CUST_00521,Meera Rao,1997-04-01,JEVMJ5752M,abc@,916670027234,"389, Park Street",Mass Retail,Completed,2026-04-13
+CUST_00689,Sneha Nair,1959-04-22,COIAW9807Y,missingdomain,916400009065,"550, Park Street",Privileged,Completed,2021-06-15
+CUST_00770,Rohan Desai,1976-03-19,SPLPW4577W,@gmail.com,919108440558,"686, Market Road",Mass Retail,Completed,2023-12-26
+CUST_00802,Vikas Choudhary,1985-12-24,PHWIM2889X,invalid-email,918801937411,"925, Market Road",Mass Retail,Completed,2024-08-19
+CUST_00943,Sahil Nair,1974-12-12,MEGOQ4775S,invalid-email,919317328070,"456, Lake View Road",Wealth,Completed,2023-01-01
+CUST_01188,Deepa Bose,1952-09-22,BFISF8416T,x@@gmail.com,917916163872,"815, MG Road",Wealth,Pending,2021-06-03
+CUST_01309,Pooja Singh,1950-09-10,HNSFT2288R,@gmail.com,916129087828,"410, Station Road",Mass Retail,Completed,2023-12-20
+CUST_01433,Harish Iyer,1971-05-15,UPDYN6065A,invalid-email,918883549621,"80, Market Road",Mass Retail,Completed,2025-06-04
+CUST_01464,Charan Kulkarni,1998-12-19,DDJUA3921L,invalid-email,918922599393,"302, Lake View Road",Mass Retail,Completed,2025-08-20
+CUST_01578,Vikas Desai,2003-09-08,ZWRCJ2668C,invalid-email,916160023601,"547, Park Street",Mass Retail,Completed,2023-06-27
+CUST_01595,Priya Menon,1962-09-04,RFCMI4948W,missingdomain,917202725070,"445, Park Street",Mass Retail,Completed,2024-12-15
+CUST_01728,Aditi Iyer,1976-09-17,HTDVV3158H,@gmail.com,919984096498,"720, Station Road",Mass Retail,Completed,2022-03-07
+CUST_01749,Arjun Joshi,1997-02-08,VHVTT8817Q,abc@,919243981956,"984, Park Street",Mass Retail,Pending,2023-05-09
+CUST_01881,Srinivas Choudhary,1962-09-21,QBLCG7851J,invalid-email,916304663896,"997, Market Road",Privileged,Completed,2025-01-21
+CUST_01934,Gaurav Choudhary,1988-10-08,XCIXM7336N,abc@,917113674950,"802, Market Road",Mass Retail,Failed,2021-10-03
+CUST_02046,Mohan Kumar,1996-01-02,BCBQX2809J,invalid-email,917700973697,"766, Lake View Road",Mass Retail,Completed,2024-07-28
+CUST_02055,Riya Verma,1953-10-09,LKQYB8603X,invalid-email,916917674126,"214, Lake View Road",Privileged,Pending,2022-01-19
+CUST_02087,Ishita Patel,1982-12-07,YTQAV8720B,missingdomain,917208467300,"155, Market Road",Privileged,Completed,2024-12-17
+CUST_02107,Srinivas Menon,1951-04-25,ZIANV7465B,invalid-email,916708711515,"457, Lake View Road",Mass Retail,Completed,2024-03-30
+CUST_02255,Mohan Patel,1950-09-17,DZBST8675A,abc@,919390916052,"105, Station Road",Mass Retail,Completed,2024-07-29
+CUST_02276,Vikas Mishra,1988-04-21,ZYRHE9287U,invalid-email,919298852963,"178, MG Road",Mass Retail,Pending,2022-11-07
+CUST_02641,Nikhil Verma,1967-11-05,PNGGL8292Z,missingdomain,918804908464,"530, Park Street",Privileged,Completed,2026-07-02
+CUST_02947,Srinivas Verma,1983-02-15,COTCM6887E,invalid-email,919012075405,"955, Market Road",Mass Retail,Completed,2024-03-29
+CUST_03199,Arvind Menon,1971-11-23,UEXNV3050W,x@@gmail.com,916310755709,"974, Station Road",Mass Retail,Completed,2021-06-05
+CUST_03247,Nandini Bose,1987-07-07,REUDH7762S,x@@gmail.com,916774245146,"408, Park Street",Mass Retail,Completed,2021-12-27
+CUST_03416,Yash Rao,1957-06-16,UKQCK8316I,abc@,919012855756,"716, Park Street",Mass Retail,Pending,2022-06-22
+CUST_03556,Raj Kumar,1975-12-19,HCIIK8367U,@gmail.com,917945600574,"697, Lake View Road",Wealth,Completed,2025-07-18
+CUST_03609,Pooja Nair,1999-11-01,CPXQZ1523S,missingdomain,916347664616,"9, Lake View Road",Privileged,Completed,2022-04-25
+CUST_03628,Srinivas Choudhary,1976-10-07,DZRYT3820S,x@@gmail.com,917452635884,"489, MG Road",Wealth,Completed,2025-08-03
+CUST_03715,Rahul Verma,1949-09-28,ZLMAK6227U,x@@gmail.com,918214193291,"360, Station Road",Mass Retail,Completed,2025-12-08
+CUST_03730,Varun Kumar,1968-12-10,WXFNX1154Z,@gmail.com,918651476947,"365, Park Street",Wealth,Completed,2021-04-17
+CUST_03747,Srinivas Verma,1987-02-24,CVWIP2587R,missingdomain,918734812961,"984, Station Road",Mass Retail,Completed,2026-07-14
+CUST_03753,Nandini Desai,1952-08-19,OGZXQ4436M,invalid-email,917908183435,"255, MG Road",Privileged,Completed,2021-02-26
+CUST_03821,Rakesh Bose,1990-01-09,APJLU3756V,invalid-email,918994576498,"726, Park Street",Mass Retail,Completed,2024-04-11
+CUST_04133,Sneha Choudhary,1986-08-17,IDQDZ2392T,x@@gmail.com,918615598603,"985, Park Street",Privileged,Completed,2024-12-01
+CUST_04137,Dev Rao,1975-02-22,PSTDP3267O,missingdomain,917302379656,"153, Station Road",Mass Retail,Completed,2026-02-12
+CUST_04171,Deepa Singh,1970-06-15,PVVZU5907D,@gmail.com,919078414158,"250, MG Road",Mass Retail,Completed,2023-11-29
+CUST_04342,Pranav Rao,1982-01-05,EANKV2560M,abc@,918053292140,"253, MG Road",Mass Retail,Completed,2022-03-02
+CUST_04417,Pooja Singh,2004-06-01,FHIRC1538Z,missingdomain,918164016584,"412, Park Street",Privileged,Completed,2023-06-07
+CUST_04634,Vikas Gupta,1973-03-18,JRTXA8431I,abc@,919675575899,"483, Market Road",Mass Retail,Completed,2026-05-29
+CUST_04750,Nikhil Mehta,1994-09-15,WCBVZ4019F,abc@,918522009866,"933, Market Road",Mass Retail,Completed,2025-01-16
+CUST_04780,Ananya Bose,1957-04-27,RWKLB8033N,@gmail.com,916440197264,"551, Market Road",Privileged,Completed,2026-04-04
+CUST_05392,Pooja Rao,1967-04-02,CVKVC2160V,x@@gmail.com,918922011475,"533, Market Road",Mass Retail,Completed,2021-07-13
+CUST_05483,Aditi Nair,1962-06-14,OBBRO1613X,x@@gmail.com,917507631273,"455, Station Road",Mass Retail,Completed,2021-03-25
+CUST_05496,Vivek Agarwal,2004-06-07,EJCEW8323P,@gmail.com,917586783315,"560, Market Road",Mass Retail,Failed,2023-12-19
+CUST_05513,Nikhil Agarwal,1962-03-22,KKEJT9248S,@gmail.com,919133698923,"488, Market Road",Mass Retail,Completed,2023-02-13
+CUST_05593,Gaurav Sharma,1976-05-14,HNUHU1059A,missingdomain,918440897373,"94, Lake View Road",Mass Retail,Completed,2022-08-18
+CUST_05611,Aditi Bose,1981-02-06,PHCTO9399N,invalid-email,916319647640,"430, MG Road",Mass Retail,Completed,2023-06-06
+CUST_05663,Divya Patel,1999-08-13,SFVFC4098E,missingdomain,919892686289,"491, Station Road",Mass Retail,Pending,2025-09-28
+CUST_05797,Rohan Menon,1971-04-08,UVLFO4685H,invalid-email,919724583221,"212, Market Road",Mass Retail,Completed,2025-02-28
+CUST_05864,Srinivas Patel,1970-03-13,DBPJC7342S,x@@gmail.com,919537764659,"39, Lake View Road",Mass Retail,Completed,2023-04-15
+CUST_05944,Akash Naidu,1987-05-05,UACPG8984V,invalid-email,918497354447,"880, Station Road",Mass Retail,Completed,2021-02-10
+CUST_06113,Aarav Verma,1988-10-06,LVVMQ2615I,abc@,918339290090,"471, MG Road",Mass Retail,Completed,2022-06-25
+CUST_06132,Yash Sharma,1977-06-17,RDKEE7612K,missingdomain,917930076019,"698, Station Road",Mass Retail,Completed,2023-10-25
+CUST_06178,Manish Gupta,1976-11-05,OYVIM1100R,x@@gmail.com,918085509512,"906, Lake View Road",Mass Retail,Completed,2021-12-21
+CUST_06195,Manish Choudhary,1981-01-01,YYNOX8653N,x@@gmail.com,916897855262,"546, Market Road",Mass Retail,Failed,2021-05-25
+CUST_06486,Riya Mehta,1996-01-17,LSZPN6376K,x@@gmail.com,916232066715,"488, Lake View Road",Mass Retail,Pending,2022-04-11
+CUST_06487,Dev Verma,1953-02-10,FSFGL8172S,@gmail.com,918385430771,"761, Park Street",Privileged,Completed,2024-03-23
+CUST_06567,Ravi Iyer,1997-06-06,RKOUC3673P,abc@,919779732709,"533, Park Street",Mass Retail,Pending,2022-04-23
+CUST_06642,Nikhil Reddy,1978-03-18,TYFVR1205G,missingdomain,917224248083,"992, MG Road",Mass Retail,Completed,2022-02-04
+CUST_06645,Sahil Singh,1997-11-26,BRFOG1051R,invalid-email,916456465349,"635, MG Road",Wealth,Completed,2024-10-15
+CUST_06648,Lakshmi Sharma,1960-04-19,ZWRAG7541B,abc@,917506337029,"897, Station Road",Mass Retail,Completed,2026-07-02
+CUST_06673,Aditi Reddy,1983-08-18,IGHRW4694X,abc@,919096422314,"460, Station Road",Privileged,Completed,2025-03-27
+CUST_06838,Gaurav Agarwal,1980-01-23,USOKV9384W,missingdomain,918436841740,"971, Station Road",Privileged,Completed,2025-02-27
+CUST_06847,Rahul Iyer,1979-05-23,IQMKS8065Y,invalid-email,919668016628,"242, Lake View Road",Mass Retail,Completed,2024-09-12
+CUST_06848,Rakesh Verma,1976-03-26,DZDXU4097M,invalid-email,916017850557,"597, Lake View Road",Mass Retail,Completed,2025-05-17
+CUST_07076,Deepa Choudhary,1988-11-16,UFGRG5856Z,abc@,919293033640,"811, Lake View Road",Mass Retail,Completed,2025-07-12
+CUST_07203,Bhavya Bose,1955-08-18,HRIFJ5959W,@gmail.com,917224233170,"424, Lake View Road",Mass Retail,Completed,2022-08-06
+CUST_07300,Dev Reddy,1967-06-22,QGXQC6805O,abc@,919973732226,"511, Lake View Road",Mass Retail,Completed,2023-06-01
+CUST_07516,Arvind Mehta,1984-05-07,,invalid-email,917065494070,"528, Park Street",Mass Retail,Completed,2023-04-06
+CUST_07520,Raj Sharma,2000-02-15,BWAJJ6931X,abc@,918549477958,"631, Market Road",Privileged,,2021-01-09
+CUST_07529,Riya Agarwal,1953-01-19,NVVQT2593J,abc@,916902240221,"746, MG Road",Privileged,Completed,2022-02-06
+CUST_07541,Nikhil Agarwal,1995-05-24,JNODA1828Y,@gmail.com,917300179605,"867, Lake View Road",Wealth,,2025-09-04
+CUST_07679,Aarav Menon,1984-06-14,LGDJN5692O,x@@gmail.com,919528430923,"115, Market Road",Mass Retail,Completed,2024-04-24
+CUST_07688,Akash Bose,1969-11-18,KRDJI1594I,@gmail.com,919506121725,"853, Lake View Road",Mass Retail,Completed,2021-01-20
+CUST_08118,Deepa Mehta,1979-12-10,QLIYL1889A,missingdomain,916927060258,"158, MG Road",Mass Retail,Completed,2026-04-20
+CUST_08135,Sanjay Kulkarni,2003-12-22,BBOYF3821D,@gmail.com,916891496424,"368, Market Road",Mass Retail,Completed,2022-05-27
+CUST_08172,Aarav Reddy,1957-02-15,VPJOB6221C,x@@gmail.com,918460939719,"640, Station Road",Mass Retail,Pending,2026-06-22
+CUST_08179,Nandini Agarwal,1954-03-05,IOZNT7928Y,x@@gmail.com,916312905933,"105, Lake View Road",Wealth,Completed,2024-05-10
+CUST_08230,Dev Joshi,2002-11-23,OLGXP7071L,@gmail.com,919816470495,"826, Lake View Road",Mass Retail,Completed,2025-07-01
+CUST_08378,Deepa Naidu,1992-08-22,HCMZH9972V,x@@gmail.com,918485088670,"191, Station Road",Mass Retail,,2021-06-20
+CUST_08386,Meera Mishra,1978-06-04,HOKNK7421Z,abc@,919654981478,"271, MG Road",Mass Retail,Completed,2021-09-30
+CUST_08408,Sneha Iyer,1981-07-08,GSUXF6524F,@gmail.com,918953936780,"743, Lake View Road",Privileged,Pending,2025-11-28
+CUST_08719,Aditya Patel,1954-02-06,TDJUN4622M,abc@,917458700323,"292, Lake View Road",Mass Retail,Completed,2025-12-30
+CUST_08721,Ravi Desai,1988-10-15,MBRXI5838N,@gmail.com,917133132357,"958, MG Road",Mass Retail,Pending,2024-03-29
+CUST_08825,Ravi Sharma,1972-10-14,QNLNJ5223E,@gmail.com,917073246071,"445, Station Road",Mass Retail,Completed,2023-04-03
+CUST_08964,Rakesh Naidu,1995-01-03,IIKNZ1583H,x@@gmail.com,916777209160,"727, MG Road",Mass Retail,Completed,2021-05-24
+CUST_09048,Pooja Agarwal,1985-03-10,VFBEP3312H,invalid-email,916839813697,"14, Market Road",Mass Retail,Completed,2026-07-17
+CUST_09153,Deepa Singh,1959-09-25,YUZCH4415S,missingdomain,916952831743,"462, Market Road",Mass Retail,Pending,2024-10-26
+CUST_09213,Riya Nair,1956-03-13,ECYDJ1738S,x@@gmail.com,916793894462,"664, MG Road",Privileged,Completed,2022-11-21
+CUST_09221,Raj Desai,2004-08-15,NCHLH5941T,@gmail.com,919946906604,"328, Station Road",Mass Retail,Completed,2025-07-03
+CUST_09325,Nikhil Mehta,1972-05-03,FOAPW7663Z,x@@gmail.com,919421253790,"130, Market Road",Mass Retail,,2026-01-01
+CUST_09358,Rohan Kulkarni,1959-06-19,UOOZT7690V,abc@,916162326983,"184, Park Street",Privileged,Completed,2024-05-20
+CUST_09513,Kavya Naidu,1953-08-06,OCDTJ2264J,missingdomain,918718536713,"466, Market Road",Mass Retail,Completed,2023-03-04
+CUST_09544,Rahul Sharma,1976-03-20,PYBNQ8795S,invalid-email,917750800586,"710, Lake View Road",Wealth,Completed,2026-06-08
+CUST_09625,Varun Desai,1971-04-06,ZCPEP2382N,invalid-email,917022560055,"293, Station Road",Privileged,Completed,2023-05-29
+CUST_09656,Raj Verma,2001-06-21,NEJLM2284C,@gmail.com,916182241676,"725, MG Road",Mass Retail,Completed,2021-02-19
+CUST_09722,Aarav Mishra,1960-12-22,AYZGW1526U,@gmail.com,918427671586,"805, Station Road",Mass Retail,,2022-01-08
+CUST_09834,Nandini Singh,2002-11-25,FKRLW6882D,abc@,917552654929,"224, Lake View Road",Mass Retail,Completed,2023-02-22
+CUST_09914,Rahul Patel,1985-09-14,ZLNWN2732H,missingdomain,918097056522,"892, Station Road",Mass Retail,Completed,2025-09-22

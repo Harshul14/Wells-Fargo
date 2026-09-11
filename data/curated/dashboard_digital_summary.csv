@@ -1,0 +1,57 @@
+App_Page,Feature_Used,Total_Hits,Unique_Customers,High_Risk_Hits,Avg_Session_Duration
+Accounts,Balance Inquiry,2510,2252,565,10.08
+Accounts,Bill Payment,2521,2237,562,9.89
+Accounts,Card Management,2577,2292,576,9.87
+Accounts,Fund Transfer,2608,2312,580,9.88
+Accounts,KYC Upload,2542,2242,553,10.06
+Accounts,Login,2498,2213,579,10.06
+Accounts,Profile,2598,2303,598,9.92
+Cards,Balance Inquiry,2508,2230,568,9.97
+Cards,Bill Payment,2520,2244,545,9.92
+Cards,Card Management,2543,2255,564,9.85
+Cards,Fund Transfer,2528,2252,597,10.05
+Cards,KYC Upload,2408,2144,539,10.05
+Cards,Login,2688,2335,629,10.11
+Cards,Profile,2630,2317,605,10.12
+Home,Balance Inquiry,2575,2269,598,9.87
+Home,Bill Payment,2607,2333,595,10.08
+Home,Card Management,2556,2267,585,9.83
+Home,Fund Transfer,2478,2214,539,9.78
+Home,KYC Upload,2500,2207,551,10.26
+Home,Login,2555,2274,588,10.02
+Home,Profile,2477,2207,521,10.15
+KYC,Balance Inquiry,2556,2264,571,10.03
+KYC,Bill Payment,2581,2265,595,9.96
+KYC,Card Management,2572,2259,568,9.72
+KYC,Fund Transfer,2492,2210,538,9.96
+KYC,KYC Upload,4141,3373,903,9.83
+KYC,Login,2605,2296,591,9.88
+KYC,Profile,2556,2253,589,9.94
+Loans,Balance Inquiry,2544,2223,597,9.77
+Loans,Bill Payment,2571,2267,564,10.09
+Loans,Card Management,2639,2347,597,10.03
+Loans,Fund Transfer,2556,2262,578,10.14
+Loans,KYC Upload,2545,2254,566,10.21
+Loans,Login,2504,2228,567,9.94
+Loans,Profile,2549,2286,564,9.86
+Payments,Balance Inquiry,2486,2172,573,9.86
+Payments,Bill Payment,2662,2345,551,9.82
+Payments,Card Management,2494,2220,579,10.03
+Payments,Fund Transfer,2628,2331,605,10.19
+Payments,KYC Upload,2596,2274,600,10.0
+Payments,Login,2592,2300,579,10.0
+Payments,Profile,2581,2275,601,9.86
+Profile,Balance Inquiry,2617,2306,569,10.01
+Profile,Bill Payment,2583,2293,600,9.93
+Profile,Card Management,2611,2294,575,9.85
+Profile,Fund Transfer,2586,2319,640,10.33
+Profile,KYC Upload,2602,2284,591,9.93
+Profile,Login,2654,2320,635,10.1
+Profile,Profile,2468,2164,527,10.01
+Transfers,Balance Inquiry,2525,2237,579,10.03
+Transfers,Bill Payment,2565,2244,566,10.03
+Transfers,Card Management,2596,2317,581,9.73
+Transfers,Fund Transfer,4762,3788,1123,9.97
+Transfers,KYC Upload,2578,2253,572,9.91
+Transfers,Login,2546,2264,545,9.91
+Transfers,Profile,2513,2205,572,9.9

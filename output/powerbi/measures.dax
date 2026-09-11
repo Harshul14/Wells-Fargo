@@ -1,0 +1,212 @@
+// ==============================================================================
+// APEX RETAIL BANK — SILENT CHURN INTELLIGENCE DAX MEASURE LIBRARY
+// Validated against schema: dashboard_customer_360, dashboard_segment_summary,
+// dashboard_branch_summary, dashboard_service_summary, dashboard_digital_summary
+// ==============================================================================
+
+// ------------------------------------------------------------------------------
+// 1. PORTFOLIO SCALE & CUSTOMER BASE
+// ------------------------------------------------------------------------------
+
+[Total Customers] = 
+COUNTROWS('dashboard_customer_360')
+
+[Total Portfolio Balance INR] = 
+SUM('dashboard_customer_360'[Total_Balance])
+
+[Total Portfolio Balance Cr] = 
+DIVIDE([Total Portfolio Balance INR], 10000000, 0)
+
+[Average Customer Balance INR] = 
+AVERAGE('dashboard_customer_360'[Total_Balance])
+
+[High Value Customers] = 
+CALCULATE(
+    COUNTROWS('dashboard_customer_360'),
+    'dashboard_customer_360'[Is_High_Value] = TRUE()
+)
+
+[High Value Customer Pct] = 
+DIVIDE([High Value Customers], [Total Customers], 0)
+
+// ------------------------------------------------------------------------------
+// 2. SILENT CHURN RISK & BALANCE AT RISK
+// ------------------------------------------------------------------------------
+
+[High Risk Customers] = 
+CALCULATE(
+    COUNTROWS('dashboard_customer_360'),
+    'dashboard_customer_360'[Is_At_Risk] = TRUE()
+)
+
+[Very High Risk Customers] = 
+CALCULATE(
+    COUNTROWS('dashboard_customer_360'),
+    'dashboard_customer_360'[Risk_Band] = "Very High"
+)
+
+[Moderate Risk Customers] = 
+CALCULATE(
+    COUNTROWS('dashboard_customer_360'),
+    'dashboard_customer_360'[Risk_Band] = "Moderate"
+)
+
+[Low Risk Customers] = 
+CALCULATE(
+    COUNTROWS('dashboard_customer_360'),
+    'dashboard_customer_360'[Risk_Band] = "Low"
+)
+
+[Portfolio Churn Risk Pct] = 
+DIVIDE([High Risk Customers], [Total Customers], 0)
+
+[Balance At Risk INR] = 
+CALCULATE(
+    [Total Portfolio Balance INR],
+    'dashboard_customer_360'[Is_At_Risk] = TRUE()
+)
+
+[Balance At Risk Cr] = 
+DIVIDE([Balance At Risk INR], 10000000, 0)
+
+[Balance At Risk Pct] = 
+DIVIDE([Balance At Risk INR], [Total Portfolio Balance INR], 0)
+
+[High Value Customers At Risk] = 
+CALCULATE(
+    COUNTROWS('dashboard_customer_360'),
+    'dashboard_customer_360'[Is_High_Value_At_Risk] = TRUE()
+)
+
+[High Value Balance At Risk Cr] = 
+CALCULATE(
+    [Total Portfolio Balance Cr],
+    'dashboard_customer_360'[Is_High_Value_At_Risk] = TRUE()
+)
+
+[Average Silent Churn Risk Score] = 
+AVERAGE('dashboard_customer_360'[Silent_Churn_Risk_Index])
+
+// ------------------------------------------------------------------------------
+// 3. DIMENSION ATTRIBUTION SCORES (0–100 SCALE)
+// ------------------------------------------------------------------------------
+
+[Avg Dim1 Customer Value Score] = 
+AVERAGE('dashboard_customer_360'[Dim1_Value])
+
+[Avg Dim2 Outflow Signal Score] = 
+AVERAGE('dashboard_customer_360'[Dim2_Outflow])
+
+[Avg Dim3 Digital Deterioration Score] = 
+AVERAGE('dashboard_customer_360'[Dim3_Digital])
+
+[Avg Dim4 Service Friction Score] = 
+AVERAGE('dashboard_customer_360'[Dim4_Service])
+
+[Avg Dim5 Credit Stress Score] = 
+AVERAGE('dashboard_customer_360'[Dim5_Credit])
+
+[Avg Dim6 Data Confidence Impairment] = 
+AVERAGE('dashboard_customer_360'[Dim6_Data_Confidence])
+
+// ------------------------------------------------------------------------------
+// 4. MONEY MOVEMENT & OUTFLOW VELOCITY
+// ------------------------------------------------------------------------------
+
+[Total Debit Outflow INR] = 
+SUM('dashboard_customer_360'[Total_Debit])
+
+[Total Debit Outflow Cr] = 
+DIVIDE([Total Debit Outflow INR], 10000000, 0)
+
+[Total Credit Inflow Cr] = 
+DIVIDE(SUM('dashboard_customer_360'[Total_Credit]), 10000000, 0)
+
+[Net Money Movement Cr] = 
+[Total Credit Inflow Cr] - [Total Debit Outflow Cr]
+
+[Outflow to Balance Ratio] = 
+DIVIDE([Total Debit Outflow INR], [Total Portfolio Balance INR], 0)
+
+// ------------------------------------------------------------------------------
+// 5. DIGITAL ENGAGEMENT & DETERIORATION
+// ------------------------------------------------------------------------------
+
+[Total Digital App Sessions] = 
+SUM('dashboard_customer_360'[Session_Count])
+
+[Average Days Inactive] = 
+AVERAGE('dashboard_customer_360'[Days_Since_Last_Login])
+
+[Severe Digital Inactivity Count] = 
+CALCULATE(
+    COUNTROWS('dashboard_customer_360'),
+    'dashboard_customer_360'[Days_Since_Last_Login] > 60
+)
+
+[Digital Inactivity Rate Pct] = 
+DIVIDE([Severe Digital Inactivity Count], [Total Customers], 0)
+
+// ------------------------------------------------------------------------------
+// 6. SERVICE FRICTION & SATISFACTION
+// ------------------------------------------------------------------------------
+
+[Total Service Grievances] = 
+SUM('dashboard_customer_360'[Complaint_Count])
+
+[Recent Grievances 90D] = 
+SUM('dashboard_customer_360'[Recent_Complaint_Count])
+
+[Average CSAT Rating] = 
+AVERAGE('dashboard_customer_360'[Average_CSAT])
+
+[Unsatisfied Customer Count CSAT <= 2] = 
+CALCULATE(
+    COUNTROWS('dashboard_customer_360'),
+    'dashboard_customer_360'[Average_CSAT] <= 2 && NOT(ISBLANK('dashboard_customer_360'[Average_CSAT]))
+)
+
+[Service Friction Rate Pct] = 
+DIVIDE([Unsatisfied Customer Count CSAT <= 2], [Total Customers], 0)
+
+[Average Resolution TAT Days] = 
+AVERAGE('dashboard_customer_360'[Average_Resolution_TAT])
+
+// ------------------------------------------------------------------------------
+// 7. CREDIT STRESS & GOVERNANCE
+// ------------------------------------------------------------------------------
+
+[Total Loan Borrowers] = 
+CALCULATE(
+    COUNTROWS('dashboard_customer_360'),
+    'dashboard_customer_360'[Loan_Count] > 0
+)
+
+[NPA Customer Count] = 
+CALCULATE(
+    COUNTROWS('dashboard_customer_360'),
+    'dashboard_customer_360'[Has_NPA] = "Y"
+)
+
+[NPA Customer Rate Pct] = 
+DIVIDE([NPA Customer Count], [Total Loan Borrowers], 0)
+
+[Overdue DPD 30Plus Count] = 
+CALCULATE(
+    COUNTROWS('dashboard_customer_360'),
+    'dashboard_customer_360'[Max_DPD] > 30
+)
+
+// ------------------------------------------------------------------------------
+// 8. DYNAMIC LABELS & KPI CARD FORMATTING
+// ------------------------------------------------------------------------------
+
+[KPI Card Balance At Risk Display] = 
+"₹" & FORMAT([Balance At Risk Cr], "#,##0.00") & " Cr (" & FORMAT([Balance At Risk Pct], "0.0%") & ")"
+
+[Risk Status Banner] = 
+IF(
+    [Portfolio Churn Risk Pct] > 0.20,
+    "🚨 CRITICAL ALERT: " & FORMAT([Portfolio Churn Risk Pct], "0.0%") & " of Retail Base At Risk (₹" & FORMAT([Balance At Risk Cr], "#,##0.00") & " Cr)",
+    "STABLE: Churn risk within acceptable tolerance"
+)

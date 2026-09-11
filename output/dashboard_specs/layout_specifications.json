@@ -1,0 +1,160 @@
+{
+  "report_title": "Apex Retail Bank \u2014 Silent Churn Executive Intelligence",
+  "theme": "Executive Dark / Modern Banking Navy & Gold",
+  "color_palette": {
+    "background": "#0B132B",
+    "card_bg": "#1C2541",
+    "primary_accent": "#48CAE4",
+    "risk_very_high": "#E63946",
+    "risk_high": "#F4A261",
+    "risk_moderate": "#E9C46A",
+    "risk_low": "#2A9D8F",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#A0AEC0"
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "title": "Executive Risk Overview",
+      "purpose": "High-level risk posture, portfolio balance exposure, and leading indicators.",
+      "kpis": [
+        {
+          "label": "Total Customers",
+          "field": "COUNT(dashboard_customer_360[Customer_ID])",
+          "format": "#,##0"
+        },
+        {
+          "label": "High-Risk Customers",
+          "field": "CALCULATE(COUNT(dashboard_customer_360[Customer_ID]), dashboard_customer_360[Is_At_Risk] = TRUE)",
+          "format": "#,##0"
+        },
+        {
+          "label": "Balance at Risk (\u20b9 Cr)",
+          "field": "CALCULATE(SUM(dashboard_customer_360[Total_Balance]), dashboard_customer_360[Is_At_Risk] = TRUE) / 10000000",
+          "format": "\u20b9#,##0.00 Cr"
+        },
+        {
+          "label": "Portfolio Churn Risk %",
+          "field": "[High-Risk Customers] / [Total Customers]",
+          "format": "0.0%"
+        },
+        {
+          "label": "Avg Portfolio CSAT",
+          "field": "AVERAGE(dashboard_customer_360[Average_CSAT])",
+          "format": "0.00 / 5.0"
+        }
+      ],
+      "visuals": [
+        {
+          "id": "V1_1",
+          "type": "Donut Chart",
+          "title": "Customer Distribution by Risk Band",
+          "legend": "Risk_Band",
+          "values": "Count of Customer_ID"
+        },
+        {
+          "id": "V1_2",
+          "type": "Clustered Bar Chart",
+          "title": "Balance at Risk by Customer Segment (\u20b9 Cr)",
+          "axis_y": "Segment",
+          "axis_x": "Balance at Risk",
+          "tooltip": "Avg Risk Score"
+        },
+        {
+          "id": "V1_3",
+          "type": "Scatter Plot",
+          "title": "Customer Outflow vs Risk Score by Segment",
+          "x_axis": "Dim2_Outflow",
+          "y_axis": "Silent_Churn_Risk_Index",
+          "size": "Total_Balance",
+          "legend": "Segment"
+        },
+        {
+          "id": "V1_4",
+          "type": "Heatmap / Treemap",
+          "title": "Service Friction & High-Risk Complaints by Category",
+          "group": "Category",
+          "values": "High_Risk_Customer_Complaints"
+        },
+        {
+          "id": "V1_5",
+          "type": "Horizontal Bar Chart",
+          "title": "Top 10 Branches by At-Risk Deposits (\u20b9 Cr)",
+          "axis_y": "Primary_Branch",
+          "axis_x": "Balance_At_Risk"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "title": "Customer Risk Explorer & Archetypes",
+      "purpose": "Granular RM action console with explainable reasons and drill-through profiles.",
+      "filters": [
+        "Segment",
+        "Primary_Branch",
+        "Risk_Band",
+        "Risk_Archetype",
+        "KYC_Status"
+      ],
+      "visuals": [
+        {
+          "id": "V2_1",
+          "type": "Card Grid",
+          "title": "Risk Archetype Breakdown",
+          "dimension": "Risk_Archetype",
+          "metric": "Customer Count & Balance"
+        },
+        {
+          "id": "V2_2",
+          "type": "Table / Matrix",
+          "title": "Individual Customer Risk Registry",
+          "columns": [
+            "Customer_ID",
+            "Name",
+            "Segment",
+            "Primary_Branch",
+            "Total_Balance",
+            "Silent_Churn_Risk_Index",
+            "Risk_Band",
+            "Primary_Risk_Reason",
+            "Risk_Archetype",
+            "Recommended_Action"
+          ],
+          "conditional_formatting": {
+            "Silent_Churn_Risk_Index": "Color scale from Green (0) to Red (100)"
+          }
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "title": "Branch & Operational Governance",
+      "purpose": "Branch manager and regional leader scorecard to drive operational accountability.",
+      "visuals": [
+        {
+          "id": "V3_1",
+          "type": "Matrix Table",
+          "title": "Branch Scorecard",
+          "rows": "Primary_Branch",
+          "values": [
+            "Total_Customers",
+            "High_Risk_Customers",
+            "High_Risk_Rate_Pct",
+            "Total_Balance",
+            "Balance_At_Risk",
+            "Avg_CSAT",
+            "NPA_Count"
+          ]
+        },
+        {
+          "id": "V3_2",
+          "type": "Bar & Line Combo",
+          "title": "Service Friction vs CSAT across Channels",
+          "x_axis": "Channel",
+          "column_values": "Total_Complaints",
+          "line_values": "Avg_CSAT"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+Category,Channel,Total_Complaints,High_Risk_Customer_Complaints,Avg_CSAT,Low_CSAT_Count,Avg_Resolution_TAT,Max_Resolution_TAT
+Fees,Branch,1308,409,3.68,247,9.58,73
+Fees,Digital,1302,457,3.63,254,9.16,75
+Fees,Phone,1330,453,3.71,254,9.55,75
+Fraud,Branch,309,80,3.77,47,6.43,67
+Fraud,Digital,305,95,3.71,51,7.48,65
+Fraud,Phone,317,98,3.78,42,8.2,72
+KYC,Branch,657,210,3.87,92,7.93,73
+KYC,Digital,718,235,3.77,109,7.54,74
+KYC,Phone,712,252,3.84,93,7.52,69
+Service,Branch,1719,540,3.76,287,7.32,75
+Service,Digital,1643,537,3.74,265,7.51,74
+Service,Phone,1680,613,3.65,319,7.48,75
