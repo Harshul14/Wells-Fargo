@@ -1,45 +1,50 @@
-# Apex Retail Bank — Executive Presentation Narrative & Slide Script
+# Apex Retail Bank — Executive Presentation Narrative & 14-Slide Storyboard
 
-This document provides the full executive presentation script, narrative structure, data citations, and slide-by-slide speaker notes for the **Apex Retail Bank Customer 360 & Silent Churn Case Study**.
+**Wells Fargo MBA Case Competition | Complete 4-Deliverable Synthesis**
 
 ---
 
 ## 1. Executive Story Arc
 
-The presentation follows a classic executive narrative arc:
-
 ```
 +-----------------------------------------------------------------------------------+
-| 1. THE THREAT                                                                     |
+| 1. THE STRATEGIC THREAT                                                           |
 | Silent churn: ₹337.89 Cr in deposits quietly leaving the bank while headline      |
 | accounts remain open.                                                             |
 +-----------------------------------------------------------------------------------+
                                          │
                                          ▼
 +-----------------------------------------------------------------------------------+
-| 2. THE DATA BLIND SPOT                                                            |
-| Disparate core banking tables and 16 critical data quality defects obscured       |
-| early warnings and misdirected frontline relationship managers.                   |
+| 2. DELIVERABLE 1: DATA DISCOVERY & RELATIONAL JOIN MODEL                          |
+| 6 core datasets, 14,000 accounts, 150k txns. Resolved 1,488 orphan txns and 25     |
+| orphan loans; formulated 18 commercial questions across 5 banking pillars.        |
 +-----------------------------------------------------------------------------------+
                                          │
                                          ▼
 +-----------------------------------------------------------------------------------+
-| 3. THE CUSTOMER 360 & INTELLIGENCE ENGINE                                         |
-| Unified 10,200 customers, synthesized behavioral signals into 6 dimensions,       |
-| and mapped exposure across segments and branches.                                 |
+| 3. DELIVERABLE 2: FORENSIC DATA QUALITY SCORECARD                                 |
+| Evaluated 29 rules across all 6 DAMA dimensions; detected 16 candidate defects     |
+| (480 duplicate PANs, future dates, negative balances); quarantined bad data.     |
 +-----------------------------------------------------------------------------------+
                                          │
                                          ▼
 +-----------------------------------------------------------------------------------+
-| 4. THE 6 OPERATIONAL ARCHETYPES                                                   |
-| Frontline intervention is not one-size-fits-all: customized workflows for        |
-| high-value flight, false alarms, digital drop-off, and credit stress.             |
+| 4. DELIVERABLE 3: BUSINESS GLOSSARY & DATA DICTIONARY                             |
+| Standardized 20 critical enterprise terms with emphasis on Customer_Master and     |
+| Loans; established validation regex, data trustworthiness, and stewardship.       |
 +-----------------------------------------------------------------------------------+
                                          │
                                          ▼
 +-----------------------------------------------------------------------------------+
-| 5. THE GOVERNANCE & 90-DAY EXECUTION MANDATE                                      |
-| Preventive controls, automated daily scans, and a phased execution roadmap        |
+| 5. DELIVERABLE 4: EXECUTIVE STORYTELLING DASHBOARD & ARCHETYPES                   |
+| Built Customer 360 (10,200 rows x 57 features), isolated ₹162.2 Cr Wealth risk,  |
+| triangulated 3 behavioral signals into 6 archetypes and 5 branch hotspots.        |
++-----------------------------------------------------------------------------------+
+                                         │
+                                         ▼
++-----------------------------------------------------------------------------------+
+| 6. GOVERNANCE CONTROLS & 30-60-90 DAY EXECUTION MANDATE                           |
+| Preventive API gates, daily detective scans, and prioritized RM triage            |
 | protecting ₹150+ Cr in retained capital.                                          |
 +-----------------------------------------------------------------------------------+
 ```
@@ -48,16 +53,14 @@ The presentation follows a classic executive narrative arc:
 
 ## 2. Epistemological Classification Key
 
-In accordance with strict banking analytics governance standards, every analytical assertion is classified by evidential certainty:
-
-- **[OBSERVED]**: Directly verifiable fact present in source ledgers (e.g., duplicate PAN count, customer count, transaction sums).
-- **[DERIVED]**: Statistically computed metric directly calculated from joined datasets (e.g., Customer 360 features, balance at risk totals).
-- **[INFERRED]**: Probabilistic or behavioral interpretation deduced from multiple correlated signals (e.g., digital decline indicating impending churn).
-- **[RECOMMENDED]**: Strategic, policy, or operational intervention proposed by the analytics team.
+- **[OBSERVED]**: Directly verifiable fact present in source ledgers.
+- **[DERIVED]**: Statistically computed metric calculated from joined datasets.
+- **[INFERRED]**: Probabilistic or behavioral interpretation deduced from correlated signals.
+- **[RECOMMENDED]**: Strategic, policy, or operational intervention proposed by the team.
 
 ---
 
-## 3. Slide-by-Slide Executive Script & Speaker Notes
+## 3. Slide-by-Slide Script & Presenter Notes (14 Slides)
 
 ### Slide 1: Title & Framing
 - **Title**: Apex Retail Bank — Customer 360 & Silent Churn Intelligence
@@ -80,56 +83,90 @@ In accordance with strict banking analytics governance standards, every analytic
 
 ---
 
-### Slide 3: Customer 360 Architecture
-- **Title**: Enterprise Customer 360 Architecture & Pipeline
-- **Pipeline Stages**:
-  - *Raw Layer*: 6 disconnected files.
-  - *Staging & Standardization*: Normalizing PAN, phone, email, and dates while preserving raw fields.
-  - *Entity Resolution*: Fuzzy matching via RapidFuzz resolving 2,039 candidate match pairs.
-  - *Curated Features*: 5 domain aggregations (Account, Money Movement, Credit, Service, Digital).
-  - *Customer 360*: Exactly 1 row per unique Customer_ID (10,200 rows, 57 features), 100% financial balance reconciliation.
+### Slide 3: DELIVERABLE 1 — Dataset Discovery & Relational Join Architecture
+- **Title**: Deliverable 1: Dataset Discovery & Relational Join Architecture
+- **Pillars**:
+  - *Inventory & Grain*: Customer_Master (10,200), Accounts (14,000), Transactions (150k), Loans (5,000), Customer_Service (12,000), Digital_Activity (150k).
+  - *Join Risks & Orphan Records*: 1,488 orphan transactions, 25 orphan loans. Fan-out join inflation prevented via domain pre-aggregation.
+  - *Reconciliation*: 100% financial balance match: Accounts total ₹1,365.42 Cr matches Customer 360 exactly (0.00% inflation).
 - **Speaker Notes**:
-  > *"Before our intervention, customer data was trapped across 6 disparate core banking tables with no single view of the customer. We designed a modern lakehouse architecture where data was standardized into Staging without mutating raw source files. We enforced the golden rule of Customer 360: exactly 1 row per Customer_ID. Every single rupee in Accounts matches the Customer 360 total of ₹1,365.42 Crores without a single rupee of join inflation."*
+  > *"Deliverable 1 requires establishing the grain, keys, missingness, matching rules, and join inflation risks across all 6 datasets. We uncovered 1,488 orphan transactions that have no parent account, and 25 orphan loans with no customer record! Crucially, merging transactions and accounts naively causes severe fan-out that inflates customer balances. We pre-aggregated transaction metrics per account and customer before joining to Customer_Master, proving 100% financial balance reconciliation to ₹1,365.42 Crores."*
 
 ---
 
-### Slide 4: Data Quality Diagnostic
-- **Title**: Data Quality Diagnostic: 16 Detected Candidate Defects
+### Slide 4: DELIVERABLE 1 — 18 Commercial & Analytical Questions
+- **Title**: Deliverable 1: 18 Commercial & Analytical Questions Formulated
+- **Formulation**: 3 rigorous commercial questions per dataset across Profitability, Liquidity, Service Quality, Digital Engagement, and Credit Risk:
+  - *Customer_Master*: KYC failure rates, duplicate clusters, onboarding cohort trends.
+  - *Accounts*: Branch liquidity concentration, multi-account profitability, RM workload limits.
+  - *Transactions*: Net money movement, channels/merchants dominating outflows, debit acceleration.
+  - *Loans*: NPA concentration by product, DPD vs complaint correlation, 60+ DPD stress by segment.
+  - *Customer_Service*: TAT and CSAT by category, fee dispute churn triggers, branch grievance skew.
+  - *Digital_Activity*: Inactivity velocity, feature narrowing preceding abandonment, transfer drop-off.
+- **Speaker Notes**:
+  > *"The workshop guide requires formulating at least three commercial or analytical questions per dataset that tie directly to profitability, liquidity, service quality, digital engagement, and credit risk. We formulated 18 high-impact questions across the 6 datasets, ensuring our data exploration directly informs bank balance sheet management."*
+
+---
+
+### Slide 5: DELIVERABLE 2 — Data Quality Scorecard & Forensic Findings
+- **Title**: Deliverable 2: Forensic Data Quality Scorecard & Remediation
 - **Findings**:
   - *7 Critical Defects*: Missing PAN (20), Duplicate PAN (480), Invalid PAN regex (82), Orphan Transactions (1,488), Orphan Loans (25), NPA classification mismatch (10).
   - *7 High Defects*: Missing KYC (306), Duplicate Emails (352), Invalid Email syntax (102), Future Onboarding Dates (46), Future Account Open Dates (66), Negative Balances in non-overdraft accounts (140).
-  - *Impact*: RBI regulatory exposure, distorted risk metrics, and unreliable downstream models.
+  - *Quarantine & Resolution*: 13 CSV defect extracts in `data/quarantine/`. RapidFuzz matched 2,039 fuzzy duplicate pairs.
 - **Speaker Notes**:
-  > *"Data quality is not just an IT issue; it is a direct operational and regulatory liability. Our automated Data Quality Engine evaluated 29 distinct business rules across all 6 DAMA dimensions and detected 16 candidate defects. Most alarmingly, 480 customer profiles share duplicate PAN cards, and 1,488 transactions belong to non-existent accounts. Because of these defects, we incorporated Dimension 6—Data Confidence Adjustment—directly into our risk scoring to penalize records with data integrity gaps."*
+  > *"Deliverable 2 accounts for 30% of the evaluation rubric. The mandate: evaluate the six DAMA dimensions and detect at least 15 distinct defects. We detected 16 genuine candidate defects: 480 accounts sharing duplicate PANs, 1,488 orphan transactions, 66 future-opened accounts, and 140 negative savings balances. All violating records are sequestered in data/quarantine/, backed by output/data_quality_scorecard.xlsx."*
 
 ---
 
-### Slide 5: Customer Value & Silent Churn Risk
-- **Title**: Portfolio Exposure: Customer Value vs. Churn Risk
-- **Metrics**:
+### Slide 6: DELIVERABLE 3 — Data Dictionary & Business Glossary
+- **Title**: Deliverable 3: Enterprise Business Glossary & Data Dictionary
+- **Standardized Concepts (20 Critical Terms)**:
+  - *Customer_Master (9 fields)*: `Customer_ID`, `Name`, `DOB`, `PAN`, `Email`, `Phone`, `Address`, `Segment`, `KYC_Status`.
+  - *Loans (4 fields)*: `Loan_ID`, `Loan_Amount`, `DPD_Days`, `NPA_Flag`, `Interest_Rate`.
+  - *Accounts, Txn, Service & Digital*: `Balance`, `Amount`, `CSAT_Score`, `Resolution_TAT_Days`, `Session_Duration_Min`.
+  - *Governance Details*: Business definition, technical SQL type, validation regex, trustworthiness rating, and steward ownership.
+- **Speaker Notes**:
+  > *"Deliverable 3 requires standardizing 15–20 critical fields with emphasis on Customer_Master and Loans. In output/business_glossary.xlsx, we documented 20 core enterprise terms. For Customer_Master, we defined exact regex rules for PAN, DOB range rules, permitted segment values, and KYC statuses. For Loans, we standardized DPD_Days and NPA_Flag under RBI IRAC norms. For every entry, we assigned an explicit business steward and defined allowed values."*
+
+---
+
+### Slide 7: DELIVERABLE 4 — Customer 360 & Silent Churn Risk Framework
+- **Title**: Deliverable 4: Customer 360 & Silent Churn Scoring Model
+- **Scoring Architecture (0–100 Scale)**:
+  - Composite Index across 6 dimensions: Customer Value (0–20), Outflow Signal (0–25), Digital Deterioration (0–20), Service Friction (0–20), Credit Stress (0–10), and Data Confidence Adjustment (0–5).
+  - Customer 360 Table: Exactly 10,200 rows x 57 engineered features.
+- **Speaker Notes**:
+  > *"Deliverable 4 covers the interactive dashboard and executive synthesis. Our analytical Customer 360 table consolidates 10,200 unique customers across 57 engineered features. Rather than making uncalibrated ML claims, our index combines 6 transparent, weighted dimensions. Notice Dimension 6: Data Confidence Adjustment. Customers with KYC gaps or orphan records receive a penalty, ensuring leadership knows when data quality impairs our confidence."*
+
+---
+
+### Slide 8: DELIVERABLE 4 — Portfolio Exposure: Value vs. Risk
+- **Title**: Deliverable 4: Portfolio Exposure — Customer Value vs. Risk
+- **Findings**:
   - Total Portfolio: ₹1,365.42 Cr (10,200 customers).
   - Balance at Risk: ₹337.89 Cr (24.7% of total retail liabilities).
   - Wealth Segment: Holds ₹520.10 Cr; ₹162.24 Cr is at risk (48.0% of total balance at risk).
   - Privileged Segment: Holds ₹465.80 Cr; ₹108.50 Cr is at risk.
   - Mass Retail: Holds ₹379.52 Cr; ₹67.15 Cr is at risk.
 - **Speaker Notes**:
-  > *"This slide contains our most important commercial discovery: Wealth customers represent only 10% of our customer count, but they represent 48% of the money at risk—over ₹162 Crores! Relationship managers cannot treat all churn risks equally. Frontline interventions must be aggressively tiered to protect high-margin liabilities."*
+  > *"This slide quantifies the commercial exposure of silent churn: Our total portfolio holds ₹1,365.42 Crores. Exactly ₹337.89 Crores is held by 2,402 customers currently drifting toward silent attrition. Wealth customers represent only 10% of our customer count, but they represent 48% of the money at risk—over ₹162 Crores! Relationship managers cannot treat all churn risks equally. Frontline interventions must be aggressively tiered."*
 
 ---
 
-### Slide 6: Silent Churn Early Warning Signals
-- **Title**: Multi-Dimensional Early Warning Indicators
-- **Signals**:
-  - *Money Outflow (25% weight)*: 2,599 customers with recent debit spikes > 75th percentile; 90D debit acceleration > 2.0x.
-  - *Digital Deterioration (20% weight)*: 3,781 customers with > 45 days since last login; transition from transactional use to mere balance viewing.
-  - *Service Friction (20% weight)*: 1,480 customers with multiple complaints in 90 days; CSAT <= 2; resolution TAT > 20 days.
+### Slide 9: DELIVERABLE 4 — Triangulated Early Warning Indicators
+- **Title**: Deliverable 4: Triangulated Early Warning Churn Indicators
+- **Three Signal Pillars**:
+  1. *Money Outflow (25% weight)*: 2,599 customers with recent debit spikes > 75th percentile; 90D debit acceleration > 2.0x.
+  2. *Digital Deterioration (20% weight)*: 3,781 customers with > 45 days since last login; transition from transactional use to mere balance viewing.
+  3. *Service Friction (20% weight)*: 1,480 customers with multiple complaints in 90 days; CSAT <= 2; resolution TAT > 20 days.
 - **Speaker Notes**:
-  > *"How do we identify silent churn before an account closes? Traditional banks wait until an account reaches zero balance. We engineered 3 primary behavioral early-warning indicators: Outflow Velocity, Digital Deterioration, and Service Friction. By identifying the drop in digital engagement 60 days before the customer stops direct deposits, we enable proactive retention."*
+  > *"The workshop guide warns: 'Do not assume that every large transaction is churn: use multiple pieces of evidence and explain your reasoning.' We triangulate three distinct signal pillars: Outflow Velocity, Digital Deterioration, and Service Friction. By identifying the drop in digital engagement 60 days before the customer stops direct deposits, we enable proactive retention."*
 
 ---
 
-### Slide 7: At-Risk Customer Archetypes
-- **Title**: Explainable Segmentation: 6 Actionable Archetypes
+### Slide 10: DELIVERABLE 4 — Explainable Segmentation: 6 Archetypes
+- **Title**: Deliverable 4: Explainable Segmentation — 6 Actionable Archetypes
 - **Archetypes**:
   - *Archetype A (198 cust | ₹112.4 Cr)*: High Value + Multi-Signal Risk ➔ 48h Senior RM outreach.
   - *Archetype B (512 cust | ₹68.2 Cr)*: High Outflow + Weak Evidence ➔ Monitor 30d; DO NOT harass.
@@ -142,19 +179,19 @@ In accordance with strict banking analytics governance standards, every analytic
 
 ---
 
-### Slide 8: Service & Digital Friction Linkage
-- **Title**: Service Friction & Digital Abandonment Dynamics
-- **Findings**:
+### Slide 11: DELIVERABLE 4 — Service Friction & Digital Abandonment
+- **Title**: Deliverable 4: Service Friction & Digital Abandonment Dynamics
+- **Dynamics**:
   - 12,000 complaints logged; Transaction Disputes (34%) and Mobile Banking Failures (28%) dominate.
   - Average resolution TAT is 10.4 days (outliers up to 75 days).
   - The Attrition Flywheel: Digital bug ➔ Unresolved complaint ➔ CSAT drops below 2 ➔ Funds transferred out ➔ Account left dormant.
 - **Speaker Notes**:
-  > *"Slide 8 exposes the exact causal chain of silent churn: the Attrition Flywheel. It begins with digital friction—an app transfer failure or mobile KYC drop-off. The customer raises a grievance. Because average resolution TAT is 10.4 days, satisfaction collapses. By connecting Customer_Service logs directly to Digital_Activity in our Customer 360, we catch this flywheel at Step 2 before funds leave."*
+  > *"Slide 11 exposes the exact causal chain of silent churn: the Attrition Flywheel. It begins with digital friction—an app transfer failure or mobile KYC drop-off. The customer raises a grievance. Because average resolution TAT is 10.4 days, satisfaction collapses. By connecting Customer_Service logs directly to Digital_Activity in our Customer 360, we catch this flywheel before funds leave."*
 
 ---
 
-### Slide 9: Branch-Level Risk Concentration
-- **Title**: Regional Governance: Geographic Risk Concentration
+### Slide 12: DELIVERABLE 4 — Regional Governance: Branch Risk Hotspots
+- **Title**: Deliverable 4: Regional Governance & Branch Risk Concentration
 - **Findings**:
   - Top 5 branch hubs (BR-104, BR-112, BR-108, BR-121, BR-115) account for ₹129.7 Cr (38.4% of at-risk balances).
   - BR-104 has ₹34.8 Cr at risk (commercial high-net-worth concentration).
@@ -164,36 +201,25 @@ In accordance with strict banking analytics governance standards, every analytic
 
 ---
 
-### Slide 10: Management Action Plan
-- **Title**: Prescriptive Action Matrix: Signal to Operational Workflow
-- **Matrix**:
-  - Signal ➔ Action ➔ Executive Owner ➔ Priority Tier.
+### Slide 13: Management Action Plan & Governance Controls
+- **Title**: Prescriptive Management Action Matrix & Governance Controls
+- **Operating Model**:
   - Wealth Flight ➔ Priority RM Call ➔ Head of Wealth ➔ P1.
-  - Service Friction ➔ Instant Fee Reversal ➔ Head of CX ➔ P1.
+  - Service Disruption ➔ Instant Fee Reversal ➔ Head of CX ➔ P1.
   - Digital Decline ➔ Biometric Re-engagement ➔ Head of Digital ➔ P2.
   - Credit Stress ➔ Proactive Restructuring ➔ Chief Risk Officer ➔ P2.
   - Data Quality Defects ➔ Video KYC Remediation ➔ Head of Operations ➔ P1.
+  - 3-Tier Governance: Hard gateway API constraints + daily automated DQ monitoring scans.
 - **Speaker Notes**:
-  > *"Analytics without execution is overhead. Slide 10 maps every signal to an explicit action, an executive owner, and a priority tier. This creates operational accountability across business units."*
+  > *"Analytics without execution is overhead. Slide 13 maps every signal to an explicit action, an executive owner, and a priority tier. This creates operational accountability across business units."*
 
 ---
 
-### Slide 11: Enterprise Data Governance Controls
-- **Title**: Enterprise Data Governance & Quality Architecture
-- **Three-Tier Architecture**:
-  - *Preventive Controls*: Gateway API regex and date range constraints.
-  - *Detective Monitoring*: Automated daily DQ engine runs, quarantine segregation, and RapidFuzz deduplication.
-  - *Governance Council*: Monthly ExCo review of DQ scorecards, linking branch KPIs to data defect rates.
-- **Speaker Notes**:
-  > *"To ensure data never degrades back into its initial fragmented state, we established a three-tier Data Governance Framework: Preventive API gates, Detective daily automated scans, and Executive Council oversight."*
-
----
-
-### Slide 12: Next Steps & 30-60-90 Day Phasing
+### Slide 14: Strategic Execution Roadmap (30-60-90 Days)
 - **Title**: Strategic Execution Roadmap: 30-60-90 Day Phasing
 - **Phased Milestones**:
   - *Days 1–30*: Triage top 198 Archetype A accounts (protect ₹112.4 Cr) and clean up 480 duplicate PAN records.
   - *Days 31–60*: Dispatch service recovery squads to Top 5 branches; cap dispute resolution SLA at 7 days; launch app re-engagement.
   - *Days 61–90*: Embed real-time risk scores into frontline CRM; automate lakehouse pipelines; target ₹150+ Cr in retained capital.
 - **Speaker Notes**:
-  > *"In the first 30 days, we stop the bleeding by protecting the top 198 accounts and remediating critical KYC defects. In days 31 to 60, we fix branch service bottlenecks. In days 61 to 90, we institutionalize the platform into daily operations. With this roadmap, Apex Retail Bank transitions from reactive account closure firefighting to proactive balance sheet protection."*
+  > *"In the first 30 days, we stop the bleeding by protecting the top 198 accounts and remediating critical KYC defects. In days 31 to 60, we fix branch service bottlenecks. In days 61 to 90, we institutionalize the Customer 360 pipeline into core CRM systems. With this roadmap, Apex Retail Bank transitions from reactive account closure firefighting to proactive balance sheet protection."*

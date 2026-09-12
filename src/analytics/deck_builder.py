@@ -1,7 +1,10 @@
 """
-Apex Retail Bank — Phase 9: Executive Presentation Builder
-Generates the 12-slide executive deck in output/Apex_Retail_Bank_Executive_Deck.pptx
-with professional typography, structured layout cards, and complete speaker notes.
+Apex Retail Bank — Phase 9: Comprehensive 14-Slide Executive Presentation Builder
+Strictly aligned with the official Apex Retail Bank Workshop Guide:
+- Deliverable 1: Dataset Discovery & Relational Modeling (Grain, Keys, Matching Rules, 18 Commercial Questions)
+- Deliverable 2: Data Quality Scorecard (16 Defects across 6 DAMA Dimensions, Remediation, Controls)
+- Deliverable 3: Data Dictionary & Business Glossary (20 Terms, Emphasis on Customer_Master & Loans, Regex, Trustworthiness)
+- Deliverable 4: Executive Storytelling Dashboard (Value vs Risk, Signals, 6 Archetypes, Branch Hotspots, Action Matrix, Roadmap)
 """
 import sys, os
 from pathlib import Path
@@ -10,7 +13,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from pptx import Presentation
 from pptx.util import Inches, Pt
-from pptx.enum.text import PP_ALIGN
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_SHAPE
 from src.config import *
@@ -28,37 +30,30 @@ AMBER_WARN = RGBColor(244, 162, 97)     # #F4A261
 TEAL_PASS = RGBColor(42, 157, 143)      # #2A9D8F
 GOLD_ACCENT = RGBColor(233, 196, 106)   # #E9C46A
 
+def set_slide_background(slide, color=NAVY_DARK):
+    fill = slide.background.fill
+    fill.solid()
+    fill.fore_color.rgb = color
+
 def create_slide_header(slide, title_text, category_text="APEX RETAIL BANK | EXECUTIVE BRIEFING"):
-    """Helper to add standard executive banner to slides."""
-    # Top banner text
     tb = slide.shapes.add_textbox(Inches(0.8), Inches(0.4), Inches(11.7), Inches(1.0))
     tf = tb.text_frame
     tf.word_wrap = True
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     
-    # Category / Tag
     p0 = tf.paragraphs[0]
     p0.text = category_text.upper()
     p0.font.size = Pt(10)
     p0.font.bold = True
     p0.font.color.rgb = CYAN_ACCENT
     
-    # Title
     p1 = tf.add_paragraph()
     p1.text = title_text
     p1.font.size = Pt(22)
     p1.font.bold = True
     p1.font.color.rgb = WHITE
 
-def set_slide_background(slide, color=NAVY_DARK):
-    """Fill slide background with executive color."""
-    background = slide.background
-    fill = background.fill
-    fill.solid()
-    fill.fore_color.rgb = color
-
 def add_card(slide, left, top, width, height, bg_color=NAVY_CARD, border_color=None):
-    """Add a card container for structured metrics."""
     shape = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
     shape.fill.solid()
     shape.fill.fore_color.rgb = bg_color
@@ -70,14 +65,13 @@ def add_card(slide, left, top, width, height, bg_color=NAVY_CARD, border_color=N
     return shape
 
 def add_speaker_notes(slide, notes_text):
-    """Attach rich speaker notes to the slide."""
     notes_slide = slide.notes_slide
     text_frame = notes_slide.notes_text_frame
     text_frame.text = notes_text
 
 def build_executive_deck():
     logger.info("=" * 60)
-    logger.info("PHASE 9: EXECUTIVE PRESENTATION BUILDER")
+    logger.info("BUILDING WORKSHOP-ALIGNED 14-SLIDE EXECUTIVE PRESENTATION")
     logger.info("=" * 60)
 
     prs = Presentation()
@@ -91,13 +85,11 @@ def build_executive_deck():
     s1 = prs.slides.add_slide(blank_layout)
     set_slide_background(s1, NAVY_DARK)
 
-    # Accent decorative bar
     bar = s1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.0), Inches(2.2), Inches(0.15), Inches(2.8))
     bar.fill.solid()
     bar.fill.fore_color.rgb = CYAN_ACCENT
     bar.line.fill.background()
 
-    # Title box
     tb = s1.shapes.add_textbox(Inches(1.4), Inches(2.1), Inches(10.5), Inches(3.2))
     tf = tb.text_frame
     tf.word_wrap = True
@@ -120,7 +112,7 @@ def build_executive_deck():
     p.font.color.rgb = GOLD_ACCENT
 
     p = tf.add_paragraph()
-    p.text = "\nWells Fargo MBA Case Competition | Lead Analytics & Data Architecture"
+    p.text = "\nWells Fargo MBA Case Competition | Complete 4-Deliverable Synthesis"
     p.font.size = Pt(13)
     p.font.color.rgb = TEXT_MUTED
 
@@ -137,7 +129,6 @@ Our framework builds a unified Customer 360 architecture, resolves critical data
     set_slide_background(s2, NAVY_DARK)
     create_slide_header(s2, "Executive Summary: Diagnosing Silent Attrition", "STRATEGIC OVERVIEW")
 
-    # 4 Pillar Cards
     cards_data = [
         ("WHAT IS HAPPENING?", "[OBSERVED]", "23.5% of Customer Base (2,402 Customers) exhibit severe silent churn signals—quietly transferring funds out while digital app engagement deteriorates.", RED_ALERT),
         ("WHY DOES IT MATTER?", "[DERIVED]", "₹337.89 Crores in retail deposits (24.7% of total portfolio) are directly exposed to flight risk, concentrated heavily in high-margin Wealth & Privileged tiers.", AMBER_WARN),
@@ -179,81 +170,39 @@ Here is the core summary for leadership:
 4. WHAT SHOULD WE DO? [RECOMMENDED]: We have mapped every at-risk customer to 1 of 6 operational archetypes with designated workflows.""")
 
     # ══════════════════════════════════════════════════════════════
-    # SLIDE 3: Customer 360 Architecture
+    # SLIDE 3: DELIVERABLE 1 — Dataset Discovery & Relational Join Model
     # ══════════════════════════════════════════════════════════════
     s3 = prs.slides.add_slide(blank_layout)
     set_slide_background(s3, NAVY_DARK)
-    create_slide_header(s3, "Enterprise Customer 360 Architecture & Pipeline", "DATA ARCHITECTURE")
+    create_slide_header(s3, "Deliverable 1: Dataset Discovery & Relational Join Architecture", "DELIVERABLE 1 — 20% WEIGHT")
 
-    add_card(s3, Inches(0.8), Inches(1.8), Inches(11.7), Inches(4.8), NAVY_CARD)
-    tb = s3.shapes.add_textbox(Inches(1.1), Inches(2.0), Inches(11.1), Inches(4.4))
-    tf = tb.text_frame
-    tf.word_wrap = True
-
-    p = tf.paragraphs[0]
-    p.text = "Deterministic Multi-Domain Ingestion & Consolidation [DERIVED]"
-    p.font.size = Pt(16)
-    p.font.bold = True
-    p.font.color.rgb = CYAN_ACCENT
-
-    arch_bullets = [
-        "• Raw Layer (6 Disjoint Silos): 10,200 Customers, 14,000 Accounts, 150,000 Transactions, 5,000 Loans, 12,000 Service Records, 150,000 Digital Activity Logs.",
-        "• Staging & Standardization: Standardized PAN, Phone, Email, Segment casing, and Date formats into staging datasets. Strict data preservation (raw values retained alongside standardized values).",
-        "• Entity Resolution Engine: RapidFuzz fuzzy clustering resolved 2,039 candidate match pairs across name permutations, shared PANs, and contact overlaps.",
-        "• Curated Feature Layer: Formed 5 customer-level aggregations (Account, Money Movement, Credit, Grievance, and Digital Inactivity features).",
-        "• Unified Customer 360: Exactly 1 row per unique Customer_ID (10,200 rows, 57 verified feature columns). Zero duplicate customer keys, 100% financial reconciliation to core banking ledgers."
-    ]
-    for b in arch_bullets:
-        p = tf.add_paragraph()
-        p.text = f"\n{b}"
-        p.font.size = Pt(12)
-        p.font.color.rgb = WHITE
-
-    add_speaker_notes(s3, """[SLIDE 3 - ARCHITECTURE]
-Slide 3 outlines how we constructed the Customer 360 foundation:
-Before our intervention, customer data was trapped across 6 disparate core banking tables with no unified view.
-We designed a modern lakehouse architecture:
-- Data was standardized into Staging without mutating raw source files.
-- We built individual domain feature builders for accounts, transactions, loans, complaints, and digital logs.
-- Crucially, we enforced the golden rule of Customer 360: exactly 1 row per Customer_ID. 
-Every single rupee in Accounts matches the Customer 360 total of ₹1,365.42 Crores without a single rupee of join inflation.""")
-
-    # ══════════════════════════════════════════════════════════════
-    # SLIDE 4: Data Quality Risk & Critical Defects
-    # ══════════════════════════════════════════════════════════════
-    s4 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s4, NAVY_DARK)
-    create_slide_header(s4, "Data Quality Diagnostic: 16 Detected Candidate Defects", "DATA GOVERNANCE")
-
-    dq_cards = [
-        ("7 CRITICAL DEFECTS", RED_ALERT, [
-            "• Missing PAN (DQ-001): 20 accounts missing tax identifiers.",
-            "• Duplicate PAN (DQ-007): 480 accounts sharing PAN credentials.",
-            "• Invalid PAN Format (DQ-009): 82 regex format violations.",
-            "• Orphan Transactions (DQ-022): 1,488 txns tied to unmapped accounts.",
-            "• Orphan Loans (DQ-023): 25 loans missing Customer_Master keys.",
-            "• NPA Classification Mismatch (DQ-029): 10 loans marked NPA with DPD <= 90."
+    d1_cards = [
+        ("INVENTORY & GRAIN", CYAN_ACCENT, [
+            "• Customer_Master: 10,200 rows | Grain: 1 row/customer | PK: Customer_ID | Missing: 20 PAN, 306 KYC.",
+            "• Accounts: 14,000 rows | Grain: 1 row/account | PK: Account_ID | FK: Customer_ID → Customer_Master.",
+            "• Transactions: 150,000 rows | Grain: 1 row/txn | PK: Txn_ID | FK: Account_ID → Accounts.",
+            "• Loans: 5,000 rows | Grain: 1 row/loan facility | PK: Loan_ID | FK: Customer_ID → Customer_Master.",
+            "• Customer_Service: 12,000 rows | Grain: 1 row/grievance | PK: Complaint_ID | FK: Customer_ID.",
+            "• Digital_Activity: 150,000 rows | Grain: 1 row/session log | PK: Log_ID | FK: Customer_ID."
         ]),
-        ("7 HIGH-SEVERITY DEFECTS", AMBER_WARN, [
-            "• Missing KYC Status (DQ-004): 306 customer records incomplete.",
-            "• Duplicate Emails (DQ-008): 352 accounts sharing emails.",
-            "• Invalid Email Format (DQ-010): 102 syntax errors.",
-            "• Future Onboarding Dates (DQ-024): 46 temporal anomalies.",
-            "• Future Account Open Dates (DQ-025): 66 accounts opened up to 2027.",
-            "• Negative Balance (DQ-027): 140 non-overdraft accounts with negative balance."
+        ("JOIN RISKS & ORPHAN RECORDS", RED_ALERT, [
+            "• Orphan Transactions (DQ-022) [OBSERVED]: 1,488 txns reference non-existent Account_IDs. Must be quarantined to avoid phantom postings.",
+            "• Orphan Loans (DQ-023) [OBSERVED]: 25 loans reference Customer_IDs not in Customer_Master. Direct credit exposure without KYC backing.",
+            "• Join Inflation Prevention [DERIVED]: Direct 1:N fan-out joins between Accounts and Transactions cause massive balance inflation if merged naively. Solved via domain pre-aggregation.",
+            "• Financial Balance Reconciliation: Accounts total ₹1,365.42 Cr matches Customer 360 exactly (0.00% discrepancy)."
         ]),
-        ("GOVERNANCE & DOWNSTREAM IMPACT", CYAN_ACCENT, [
-            "• Regulatory Exposure [OBSERVED]: RBI KYC & AML violations from shared PANs.",
-            "• Credit Impairment [DERIVED]: Inaccurate provisioning from orphan loans & premature NPA flags.",
-            "• Silent Churn Blindspot [INFERRED]: 1,214 customers have impaired data confidence, distorting risk flags.",
-            "• Quarantine Pipeline [RECOMMENDED]: Automated routing of defect records into data/quarantine/."
+        ("MATCHING RULES & ENFORCEMENT", GOLD_ACCENT, [
+            "• Customer Anchor: Customer_Master serves as the single anchor entity.",
+            "• Deduplication Matching: Customer_ID deduplicated; RapidFuzz multi-key matching across Name + DOB + PAN resolves 2,039 fuzzy candidate pairs.",
+            "• Directionality: Strict 1-to-many single-direction filtering enforced.",
+            "• Uniqueness Verification: Customer 360 grain verified as exactly 1 row per Customer_ID (10,200 distinct keys)."
         ])
     ]
 
     left_pos = 0.8
-    for title, col, items in dq_cards:
-        add_card(s4, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(4.8), NAVY_CARD, col)
-        tb = s4.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.95), Inches(3.4), Inches(4.5))
+    for title, col, bullets in d1_cards:
+        add_card(s3, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(4.8), NAVY_CARD, col)
+        tb = s3.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.95), Inches(3.4), Inches(4.5))
         tf = tb.text_frame
         tf.word_wrap = True
         
@@ -263,28 +212,231 @@ Every single rupee in Accounts matches the Customer 360 total of ₹1,365.42 Cro
         p.font.bold = True
         p.font.color.rgb = col
         
-        for item in items:
+        for b in bullets:
             p = tf.add_paragraph()
-            p.text = f"\n{item}"
-            p.font.size = Pt(10)
+            p.text = f"\n{b}"
+            p.font.size = Pt(9.5)
             p.font.color.rgb = WHITE
         left_pos += 4.0
 
-    add_speaker_notes(s4, """[SLIDE 4 - DATA QUALITY DIAGNOSTIC]
-Data quality is not just an IT issue; it is a direct operational and regulatory liability.
-Our automated Data Quality Engine evaluated 29 distinct business rules across all 6 DAMA dimensions and detected 16 candidate defects:
-- 7 Critical Defects: Most alarmingly, 480 customer profiles share duplicate PAN cards, and 1,488 transactions belong to non-existent accounts.
-- 7 High-Severity Defects: We uncovered 66 accounts opened in the future (some dated in 2027) and 140 savings accounts with negative balances.
-- Because of these defects, we incorporated Dimension 6—Data Confidence Adjustment—directly into our risk scoring to penalize records with data integrity gaps.""")
+    add_speaker_notes(s3, """[SLIDE 3 - DELIVERABLE 1: DATASET DISCOVERY & RELATIONAL MODEL]
+Deliverable 1 requires establishing the grain, keys, missingness, matching rules, and join inflation risks across all 6 datasets.
+Key discoveries:
+1. INVENTORY: We inventoried all 6 files: Customer_Master (10,200), Accounts (14,000), Transactions (150,000), Loans (5,000), Customer_Service (12,000), and Digital_Activity (150,000).
+2. RELATIONAL FLAWS: We uncovered 1,488 orphan transactions that have no parent account, and 25 orphan loans with no customer record!
+3. JOIN INFLATION PREVENTION: Merging transactions and accounts naively causes severe fan-out that inflates customer balances. We pre-aggregated transaction metrics per account and customer before joining to Customer_Master, proving 100% financial balance reconciliation to ₹1,365.42 Crores.""")
 
     # ══════════════════════════════════════════════════════════════
-    # SLIDE 5: Customer Value & Silent Churn Risk
+    # SLIDE 4: DELIVERABLE 1 — 18 Commercial & Analytical Questions
+    # ══════════════════════════════════════════════════════════════
+    s4 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s4, NAVY_DARK)
+    create_slide_header(s4, "Deliverable 1: 18 Commercial & Analytical Questions Formulated", "DELIVERABLE 1 (CONT.) — 3 QUESTIONS PER DATASET")
+
+    add_card(s4, Inches(0.8), Inches(1.8), Inches(11.7), Inches(4.8), NAVY_CARD)
+    tb = s4.shapes.add_textbox(Inches(1.1), Inches(2.0), Inches(11.1), Inches(4.4))
+    tf = tb.text_frame
+    tf.word_wrap = True
+
+    p = tf.paragraphs[0]
+    p.text = "Commercial Inquiries Connecting Data to Profitability, Liquidity, Service & Risk"
+    p.font.size = Pt(14)
+    p.font.bold = True
+    p.font.color.rgb = CYAN_ACCENT
+
+    q_text = [
+        "1. Customer_Master: Q1 (Compliance) Segment KYC failure rates? | Q2 (Governance) Duplicate clusters sharing PAN/contact? | Q3 (Operations) Data quality profiles across onboarding cohorts.",
+        "2. Accounts: Q4 (Liquidity/Risk) Branch balance concentration risk? | Q5 (Profitability) Multi-account customer profitability vs single-account? | Q6 (Service) RM portfolio value overload and capacity limits.",
+        "3. Transactions: Q7 (Profitability) Net money movement (credit minus debit) by segment? | Q8 (Churn) Channels & merchant categories dominating high-value outflows? | Q9 (Velocity) Trailing 90D debit acceleration.",
+        "4. Loans: Q10 (Credit Risk) NPA concentration across loan products? | Q11 (Cross-Signal) Correlation between high DPD and service complaints? | Q12 (Stressed Assets) Total exposure in 60+ DPD status by segment.",
+        "5. Customer_Service: Q13 (Service Quality) Categories with worst resolution TAT & lowest CSAT? | Q14 (Churn) Linkage between fee disputes and large fund transfers? | Q15 (Operations) Branch complaint skew.",
+        "6. Digital_Activity: Q16 (Digital Engagement) Login recency & session duration drop in Wealth tier? | Q17 (Strategy) Feature narrowing preceding account abandonment? | Q18 (Cross-Signal) Transfer drop-off vs complaints."
+    ]
+    for qt in q_text:
+        p = tf.add_paragraph()
+        p.text = f"\n{qt}"
+        p.font.size = Pt(10)
+        p.font.color.rgb = WHITE
+
+    add_speaker_notes(s4, """[SLIDE 4 - DELIVERABLE 1: 18 COMMERCIAL & ANALYTICAL QUESTIONS]
+The workshop guide requires formulating at least three commercial or analytical questions per dataset that tie directly to profitability, liquidity, service quality, digital engagement, and credit risk.
+We formulated 18 high-impact questions across the 6 datasets:
+- On Accounts & Liquidity: We investigate branch deposit concentration and RM workload capacity.
+- On Transactions & Profitability: We measure net money movement and debit acceleration.
+- On Customer Service: We test whether fee disputes directly trigger subsequent large fund withdrawals.
+- On Digital Activity: We track whether feature narrowing and app inactivity act as the earliest behavioral indicators of churn.""")
+
+    # ══════════════════════════════════════════════════════════════
+    # SLIDE 5: DELIVERABLE 2 — Data Quality Scorecard & Forensic Findings
     # ══════════════════════════════════════════════════════════════
     s5 = prs.slides.add_slide(blank_layout)
     set_slide_background(s5, NAVY_DARK)
-    create_slide_header(s5, "Portfolio Exposure: Customer Value vs. Churn Risk", "RISK QUANTIFICATION")
+    create_slide_header(s5, "Deliverable 2: Forensic Data Quality Scorecard & Remediation", "DELIVERABLE 2 — 30% WEIGHT (16 DEFECTS ACROSS 6 DIMENSIONS)")
 
-    # 3 Metrics at top
+    dq_cards = [
+        ("7 CRITICAL DEFECTS", RED_ALERT, [
+            "• Missing PAN (DQ-001): 20 accounts missing tax identifiers. Remediate via tax portal.",
+            "• Duplicate PAN (DQ-007): 480 accounts sharing PAN credentials. Major AML/tax breach.",
+            "• Invalid PAN Regex (DQ-009): 82 format violations. Implement gateway regex check.",
+            "• Orphan Transactions (DQ-022): 1,488 txns tied to non-existent accounts.",
+            "• Orphan Loans (DQ-023): 25 loans missing Customer_Master anchors.",
+            "• NPA Flag Mismatch (DQ-029): 10 loans classified NPA despite DPD <= 90."
+        ]),
+        ("7 HIGH-SEVERITY DEFECTS", AMBER_WARN, [
+            "• Missing KYC Status (DQ-004): 306 customer records incomplete.",
+            "• Duplicate Emails (DQ-008): 352 accounts sharing emails.",
+            "• Invalid Email Format (DQ-010): 102 syntax errors.",
+            "• Future Onboarding Dates (DQ-024): 46 temporal anomalies.",
+            "• Future Account Open Dates (DQ-025): 66 accounts opened up to 2027.",
+            "• Negative Balance (DQ-027): 140 non-overdraft accounts with negative balance."
+        ]),
+        ("REMEDIATION & CONTROLS", TEAL_PASS, [
+            "• Physical Quarantine: Violating records isolated in data/quarantine/ (13 CSV extracts).",
+            "• Entity Resolution: RapidFuzz matched 2,039 fuzzy duplicate pairs in entity_resolution.xlsx.",
+            "• Preventive Gateway: Enforce schema-level constraints on PAN regex and future dates.",
+            "• Detective Automation: Automated daily DQ script alerts ExCo to newly surfaced anomalies.",
+            "• Complete Backing: Backed by output/data_quality_scorecard.xlsx & data_quality_defect_log.xlsx."
+        ])
+    ]
+
+    left_pos = 0.8
+    for title, col, bullets in dq_cards:
+        add_card(s5, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(4.8), NAVY_CARD, col)
+        tb = s5.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.95), Inches(3.4), Inches(4.5))
+        tf = tb.text_frame
+        tf.word_wrap = True
+        
+        p = tf.paragraphs[0]
+        p.text = title
+        p.font.size = Pt(13)
+        p.font.bold = True
+        p.font.color.rgb = col
+        
+        for b in bullets:
+            p = tf.add_paragraph()
+            p.text = f"\n{b}"
+            p.font.size = Pt(9.5)
+            p.font.color.rgb = WHITE
+        left_pos += 4.0
+
+    add_speaker_notes(s5, """[SLIDE 5 - DELIVERABLE 2: DATA QUALITY SCORECARD & REMEDIATION]
+Deliverable 2 accounts for 30% of the evaluation rubric.
+The mandate: evaluate the six DAMA dimensions (Completeness, Uniqueness, Validity, Consistency, Integrity, Timeliness) and detect at least 15 distinct defects.
+We detected 16 genuine candidate defects:
+- 7 Critical Defects: 480 accounts sharing duplicate PANs, 1,488 orphan transactions, and 10 premature NPA classifications.
+- 7 High Defects: 66 accounts opened in the future (some dated in 2027) and 140 negative savings balances.
+- All violating records are sequestered in data/quarantine/ without contaminating downstream models.
+- Full evidence is backed in data_quality_scorecard.xlsx and data_quality_defect_log.xlsx.""")
+
+    # ══════════════════════════════════════════════════════════════
+    # SLIDE 6: DELIVERABLE 3 — Data Dictionary & Business Glossary
+    # ══════════════════════════════════════════════════════════════
+    s6 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s6, NAVY_DARK)
+    create_slide_header(s6, "Deliverable 3: Enterprise Business Glossary & Data Dictionary", "DELIVERABLE 3 — 20% WEIGHT (20 STANDARDIZED FIELDS)")
+
+    gloss_cards = [
+        ("CUSTOMER_MASTER (9 FIELDS)", CYAN_ACCENT, [
+            "• Customer_ID: VARCHAR | Pattern: ^CUST_\\d{5}$ | High Trust (System PK) | Steward: Core Banking Ops.",
+            "• Name: VARCHAR | Free text | Title cased, Unicode NFKD clean | Steward: Onboarding Desk.",
+            "• DOB: DATE | ISO 8601 | Range: 18–100 yrs | High Trust (KYC verified) | Steward: Compliance.",
+            "• PAN: CHAR(10) | Regex: ^[A-Z]{5}[0-9]{4}[A-Z]$ | Medium Trust (Entry errors) | Steward: Tax Compliance.",
+            "• Email & Phone: Standardized RFC 5322 & E.164 numeric formatting | Steward: Digital Channels.",
+            "• Segment: Permitted: Wealth, Privileged, Mass Retail | Steward: Retail Product Head.",
+            "• KYC_Status: Permitted: Completed, Pending, Failed | Steward: Chief Compliance Officer."
+        ]),
+        ("LOANS & CREDIT (4 FIELDS)", AMBER_WARN, [
+            "• Loan_ID: VARCHAR | Pattern: ^LN_\\d{5}$ | Unique credit facility identifier | Steward: Lending Ops.",
+            "• Loan_Amount: DECIMAL(14,2) | Sanctioned principal | Range: > 0 | Steward: Credit Underwriting.",
+            "• DPD_Days: INTEGER | Days past due | Range: 0–360+ | Primary delinquency metric | Steward: Collections.",
+            "• NPA_Flag: CHAR(1) | Permitted: 'Y', 'N' | RBI IRAC 90+ DPD norm | Steward: Chief Risk Officer.",
+            "• Interest_Rate: DECIMAL(5,2) | Annualized interest percentage | Steward: Asset-Liability Committee."
+        ]),
+        ("ACCOUNTS, TXN, CS & DIGITAL", GOLD_ACCENT, [
+            "• Balance: Ledger deposit balance in INR | Crucial for liquidity & churn impact | Steward: Treasury.",
+            "• Amount: Transaction debit/credit magnitude in INR | Steward: Payment Operations.",
+            "• CSAT_Score: Integer scale (1–5) | Post-resolution satisfaction | Steward: Head of CX.",
+            "• Resolution_TAT_Days: Days to close grievance | SLA monitoring | Steward: Service Operations.",
+            "• Session_Duration_Min: App engagement telemetry in minutes | Steward: Digital Product Lead.",
+            "• Complete Backing: Backed by output/business_glossary.xlsx (12 sheets of technical & business rules)."
+        ])
+    ]
+
+    left_pos = 0.8
+    for title, col, bullets in gloss_cards:
+        add_card(s6, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(4.8), NAVY_CARD, col)
+        tb = s6.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.95), Inches(3.4), Inches(4.5))
+        tf = tb.text_frame
+        tf.word_wrap = True
+        
+        p = tf.paragraphs[0]
+        p.text = title
+        p.font.size = Pt(12)
+        p.font.bold = True
+        p.font.color.rgb = col
+        
+        for b in bullets:
+            p = tf.add_paragraph()
+            p.text = f"\n{b}"
+            p.font.size = Pt(9.5)
+            p.font.color.rgb = WHITE
+        left_pos += 4.0
+
+    add_speaker_notes(s6, """[SLIDE 6 - DELIVERABLE 3: DATA DICTIONARY & BUSINESS GLOSSARY]
+Deliverable 3 requires standardizing 15–20 critical fields with emphasis on Customer_Master and Loans.
+In output/business_glossary.xlsx, we documented 20 core enterprise terms:
+- For Customer_Master: We defined exact regex rules for PAN, DOB range rules, permitted segment values, and KYC statuses.
+- For Loans: We standardized DPD_Days and NPA_Flag under RBI IRAC norms.
+- For every entry, we assigned an explicit business steward, defined allowed values, and established a data trustworthiness tier.
+- Furthermore, our staging pipeline cleans all fields while preserving raw inputs side-by-side for complete data lineage.""")
+
+    # ══════════════════════════════════════════════════════════════
+    # SLIDE 7: DELIVERABLE 4 — Customer 360 & Silent Churn Risk Framework
+    # ══════════════════════════════════════════════════════════════
+    s7 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s7, NAVY_DARK)
+    create_slide_header(s7, "Deliverable 4: Customer 360 & Silent Churn Scoring Model", "DELIVERABLE 4 — 30% WEIGHT (MULTI-DIMENSIONAL SCORING)")
+
+    add_card(s7, Inches(0.8), Inches(1.8), Inches(11.7), Inches(4.8), NAVY_CARD)
+    tb = s7.shapes.add_textbox(Inches(1.1), Inches(2.0), Inches(11.1), Inches(4.4))
+    tf = tb.text_frame
+    tf.word_wrap = True
+
+    p = tf.paragraphs[0]
+    p.text = "Mathematical Formulation of the Silent Churn Risk Index (0–100 Scale)"
+    p.font.size = Pt(15)
+    p.font.bold = True
+    p.font.color.rgb = CYAN_ACCENT
+
+    model_bullets = [
+        "• Silent Churn Risk Index = Dim 1 (Customer Value) + Dim 2 (Outflow Signal) + Dim 3 (Digital Decay) + Dim 4 (Service Friction) + Dim 5 (Credit Stress) + Dim 6 (Data Confidence Adjustment).",
+        "• Dim 1 — Customer Value (0–20 pts): Balances (40%), Account diversity (15%), Loan relationship (15%), Segment tier (30%). Measures business impact if customer leaves.",
+        "• Dim 2 — Outflow Signal (0–25 pts): Recent debit volume (40%), Trailing 90D debit acceleration ratio (30%), Transaction count drop (30%). Detects active capital flight.",
+        "• Dim 3 — Digital Deterioration (0–20 pts): Login recency (35%), Session frequency (35%), Digital engagement trend (30%). Identifies digital disengagement 60 days before closure.",
+        "• Dim 4 — Service Friction (0–20 pts): Complaint count (25%), Recent complaints (25%), Inverted CSAT score (30%), Resolution TAT (20%). Emotional catalyst for churn.",
+        "• Dim 5 — Credit Stress (0–10 pts): Max DPD (60%), NPA flag (40%). Financial distress deteriorating relationship.",
+        "• Dim 6 — Data Confidence Adjustment (0–5 pts): KYC gaps, missing contact records, orphan keys. Penalizes unreliable data."
+    ]
+    for mb in model_bullets:
+        p = tf.add_paragraph()
+        p.text = f"\n{mb}"
+        p.font.size = Pt(10)
+        p.font.color.rgb = WHITE
+
+    add_speaker_notes(s7, """[SLIDE 7 - DELIVERABLE 4: CUSTOMER 360 & RISK ENGINE]
+Deliverable 4 covers the interactive dashboard and executive synthesis.
+Our analytical Customer 360 table consolidates 10,200 unique customers across 57 engineered features.
+To answer the core question—'Which customers are at risk of churning and why should bank leadership care?'—we built a multi-dimensional Silent Churn Risk Index.
+Rather than making uncalibrated ML claims, our index combines 6 transparent, weighted dimensions.
+Notice Dimension 6: Data Confidence Adjustment. Customers with KYC gaps or orphan records receive a penalty, ensuring leadership knows when data quality impairs our confidence.""")
+
+    # ══════════════════════════════════════════════════════════════
+    # SLIDE 8: DELIVERABLE 4 — Customer Value vs. Churn Risk Exposure
+    # ══════════════════════════════════════════════════════════════
+    s8 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s8, NAVY_DARK)
+    create_slide_header(s8, "Deliverable 4: Portfolio Exposure — Customer Value vs. Risk", "DELIVERABLE 4 (CONT.) — FINANCIAL EXPOSURE")
+
     kpi_banner = [
         ("Total Retail Deposit Portfolio", "₹1,365.42 Cr", "10,200 Customers", CYAN_ACCENT),
         ("Total Balance at Churn Risk", "₹337.89 Cr", "24.7% of Portfolio Liabilities", RED_ALERT),
@@ -292,8 +444,8 @@ Our automated Data Quality Engine evaluated 29 distinct business rules across al
     ]
     left_pos = 0.8
     for label, val, sub, col in kpi_banner:
-        add_card(s5, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(1.4), NAVY_CARD, col)
-        tb = s5.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.9), Inches(3.4), Inches(1.2))
+        add_card(s8, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(1.4), NAVY_CARD, col)
+        tb = s8.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.9), Inches(3.4), Inches(1.2))
         tf = tb.text_frame
         p = tf.paragraphs[0]
         p.text = label.upper()
@@ -310,9 +462,8 @@ Our automated Data Quality Engine evaluated 29 distinct business rules across al
         p.font.color.rgb = WHITE
         left_pos += 4.0
 
-    # Main Segment Exposure Table / Grid
-    add_card(s5, Inches(0.8), Inches(3.4), Inches(11.7), Inches(3.4), NAVY_CARD)
-    tb = s5.shapes.add_textbox(Inches(1.1), Inches(3.6), Inches(11.1), Inches(3.0))
+    add_card(s8, Inches(0.8), Inches(3.4), Inches(11.7), Inches(3.4), NAVY_CARD)
+    tb = s8.shapes.add_textbox(Inches(1.1), Inches(3.6), Inches(11.1), Inches(3.0))
     tf = tb.text_frame
     tf.word_wrap = True
 
@@ -334,20 +485,20 @@ Our automated Data Quality Engine evaluated 29 distinct business rules across al
         p.font.size = Pt(11)
         p.font.color.rgb = TEXT_MUTED
 
-    add_speaker_notes(s5, """[SLIDE 5 - CUSTOMER VALUE AND RISK]
-This slide contains our most important commercial discovery:
-Our total portfolio holds ₹1,365.42 Crores. ₹337.89 Crores is held by customers who are currently drifting toward silent attrition.
+    add_speaker_notes(s8, """[SLIDE 8 - DELIVERABLE 4: VALUE VS CHURN RISK]
+This slide quantifies the commercial exposure of silent churn:
+Our total portfolio holds ₹1,365.42 Crores. Exactly ₹337.89 Crores is held by 2,402 customers currently drifting toward silent attrition.
 Look at the segment breakdown:
 Wealth customers represent only 10% of our customer count, but they represent 48% of the money at risk—over ₹162 Crores!
 Privileged customers account for another ₹108 Crores.
 Therefore, relationship managers cannot treat all churn risks equally. Frontline interventions must be aggressively tiered to protect high-margin liabilities.""")
 
     # ══════════════════════════════════════════════════════════════
-    # SLIDE 6: Silent Churn Signals
+    # SLIDE 9: DELIVERABLE 4 — Triangulated Silent Churn Signals
     # ══════════════════════════════════════════════════════════════
-    s6 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s6, NAVY_DARK)
-    create_slide_header(s6, "Multi-Dimensional Early Warning Indicators", "BEHAVIORAL SIGNALS")
+    s9 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s9, NAVY_DARK)
+    create_slide_header(s9, "Deliverable 4: Triangulated Early Warning Churn Indicators", "DELIVERABLE 4 (CONT.) — BEHAVIORAL TRIANGULATION")
 
     signals = [
         ("MONEY OUTFLOW SIGNALS", "Dimension 2 (Weight: 25%)", [
@@ -369,8 +520,8 @@ Therefore, relationship managers cannot treat all churn risks equally. Frontline
 
     left_pos = 0.8
     for title, sub, bullets, col in signals:
-        add_card(s6, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(4.8), NAVY_CARD, col)
-        tb = s6.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.95), Inches(3.4), Inches(4.5))
+        add_card(s9, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(4.8), NAVY_CARD, col)
+        tb = s9.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.95), Inches(3.4), Inches(4.5))
         tf = tb.text_frame
         tf.word_wrap = True
         
@@ -390,30 +541,29 @@ Therefore, relationship managers cannot treat all churn risks equally. Frontline
             p.text = f"\n{b}"
             p.font.size = Pt(10)
             p.font.color.rgb = TEXT_MUTED
-            
         left_pos += 4.0
 
-    add_speaker_notes(s6, """[SLIDE 6 - SILENT CHURN SIGNALS]
-How do we identify silent churn before an account closes?
-Traditional banks wait until an account reaches zero balance. We engineered 3 primary behavioral early-warning indicators:
-1. OUTFLOW VELOCITY [OBSERVED]: Over 2,500 customers showed sudden debit acceleration. Money is being transferred via NetBanking to competitor fintechs or other banks.
+    add_speaker_notes(s9, """[SLIDE 9 - DELIVERABLE 4: TRIANGULATED SIGNALS]
+The workshop guide warns: 'Do not assume that every large transaction is churn: use multiple pieces of evidence and explain your reasoning.'
+We triangulate three distinct signal pillars:
+1. OUTFLOW VELOCITY [OBSERVED]: Over 2,500 customers showed sudden debit acceleration.
 2. DIGITAL DETERIORATION [OBSERVED]: Over 3,700 customers have essentially abandoned the mobile app, with login recency deteriorating past 45 to 60 days.
 3. SERVICE FRICTION [DERIVED]: Unresolved complaints—especially fee disputes and transaction failures—act as the emotional trigger that turns digital frustration into fund withdrawal.""")
 
     # ══════════════════════════════════════════════════════════════
-    # SLIDE 7: At-Risk Customer Archetypes
+    # SLIDE 10: DELIVERABLE 4 — Explainable Segmentation: 6 Archetypes
     # ══════════════════════════════════════════════════════════════
-    s7 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s7, NAVY_DARK)
-    create_slide_header(s7, "Explainable Segmentation: 6 Actionable Archetypes", "OPERATIONAL TAXONOMY")
+    s10 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s10, NAVY_DARK)
+    create_slide_header(s10, "Deliverable 4: Explainable Segmentation — 6 Actionable Archetypes", "DELIVERABLE 4 (CONT.) — OPERATIONAL TAXONOMY")
 
-    add_card(s7, Inches(0.8), Inches(1.8), Inches(11.7), Inches(4.8), NAVY_CARD)
-    tb = s7.shapes.add_textbox(Inches(1.1), Inches(2.0), Inches(11.1), Inches(4.4))
+    add_card(s10, Inches(0.8), Inches(1.8), Inches(11.7), Inches(4.8), NAVY_CARD)
+    tb = s10.shapes.add_textbox(Inches(1.1), Inches(2.0), Inches(11.1), Inches(4.4))
     tf = tb.text_frame
     tf.word_wrap = True
 
     p = tf.paragraphs[0]
-    p.text = "Operational Customer Archetypes & Prescriptive Action Protocols [RECOMMENDED]"
+    p.text = "Actionable Frontline Archetypes & Prescriptive Operating Protocols [RECOMMENDED]"
     p.font.size = Pt(15)
     p.font.bold = True
     p.font.color.rgb = WHITE
@@ -426,25 +576,24 @@ Traditional banks wait until an account reaches zero balance. We engineered 3 pr
         "• Archetype E — Data Confidence Limited Risk (433 Customers | ₹14.1 Cr): Incomplete KYC or missing profile data rendering risk score noisy. ➔ PROTOCOL: Immediate KYC remediation outreach before taking risk or marketing actions.",
         "• Archetype F — Baseline / Stable (7,798 Customers | ₹1,067.6 Cr): Normal transaction cadence, moderate to low risk. ➔ PROTOCOL: Standard relationship management."
     ]
-
     for at in archetypes_text:
         p = tf.add_paragraph()
         p.text = f"\n{at}"
         p.font.size = Pt(10.5)
         p.font.color.rgb = TEXT_MUTED
 
-    add_speaker_notes(s7, """[SLIDE 7 - ARCHETYPES]
-A single composite score is useless to a relationship manager unless it explains *why* the customer is at risk and *what* to do.
+    add_speaker_notes(s10, """[SLIDE 10 - DELIVERABLE 4: 6 ACTIONABLE ARCHETYPES]
+A single composite score is useless to an RM unless it explains *why* the customer is at risk and *what* to do.
 We clustered the at-risk population into 6 mutually exclusive operational archetypes:
-Notice Archetype B: 512 customers had massive outflows, but no service complaints and healthy digital logins. In banking, this is often a home purchase or tax payment. Calling them with desperate retention discounts annoys them. The rule engine prescribes: 'Monitor for 30 days; do not harass.'
+Notice Archetype B: 512 customers had massive outflows, but no service complaints and healthy digital logins. Calling them with desperate retention discounts annoys them. The rule engine prescribes: 'Monitor for 30 days; do not harass.'
 Contrast that with Archetype A: high balances combined with complaints and digital drop-off. These 198 customers represent ₹112 Crores. They get senior RM outreach within 48 hours.""")
 
     # ══════════════════════════════════════════════════════════════
-    # SLIDE 8: Service & Digital Friction Linkage
+    # SLIDE 11: DELIVERABLE 4 — Service & Digital Friction Linkage
     # ══════════════════════════════════════════════════════════════
-    s8 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s8, NAVY_DARK)
-    create_slide_header(s8, "Service Friction & Digital Abandonment Dynamics", "ROOT CAUSE ANALYSIS")
+    s11 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s11, NAVY_DARK)
+    create_slide_header(s11, "Deliverable 4: Service Friction & Digital Abandonment Dynamics", "DELIVERABLE 4 (CONT.) — ROOT CAUSE ANALYSIS")
 
     fric_cards = [
         ("GRIEVANCE DRIVERS", CYAN_ACCENT, [
@@ -470,8 +619,8 @@ Contrast that with Archetype A: high balances combined with complaints and digit
 
     left_pos = 0.8
     for title, col, bullets in fric_cards:
-        add_card(s8, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(4.8), NAVY_CARD, col)
-        tb = s8.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.95), Inches(3.4), Inches(4.5))
+        add_card(s11, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(4.8), NAVY_CARD, col)
+        tb = s11.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.95), Inches(3.4), Inches(4.5))
         tf = tb.text_frame
         tf.word_wrap = True
         
@@ -488,22 +637,22 @@ Contrast that with Archetype A: high balances combined with complaints and digit
             p.font.color.rgb = TEXT_MUTED
         left_pos += 4.0
 
-    add_speaker_notes(s8, """[SLIDE 8 - SERVICE AND DIGITAL FRICTION]
-Slide 8 exposes the exact causal chain of silent churn: the Attrition Flywheel.
-It begins with digital friction: app transaction glitches or mobile KYC drop-offs.
-The customer raises a grievance. But because average resolution TAT is 10.4 days—with hundreds taking over 30 days—satisfaction collapses.
-Once CSAT falls below 2, the customer rarely closes their account; instead, they change their salary direct deposit or move their savings balance to HDFC or ICICI via UPI.
-By connecting Customer_Service logs directly to Digital_Activity in our Customer 360, we catch this flywheel at Step 2 before funds leave.""")
+    add_speaker_notes(s11, """[SLIDE 11 - DELIVERABLE 4: SERVICE & DIGITAL FRICTION]
+Slide 11 exposes the exact causal chain of silent churn: the Attrition Flywheel.
+It begins with digital friction—an app transfer failure or mobile KYC drop-off.
+The customer raises a grievance. But because average resolution TAT is 10.4 days, satisfaction collapses.
+Once CSAT falls below 2, the customer moves deposits to competitor fintechs.
+By connecting Customer_Service logs directly to Digital_Activity in our Customer 360, we catch this flywheel before funds leave.""")
 
     # ══════════════════════════════════════════════════════════════
-    # SLIDE 9: Branch-Level Risk Concentration
+    # SLIDE 12: DELIVERABLE 4 — Branch Network Risk Concentration
     # ══════════════════════════════════════════════════════════════
-    s9 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s9, NAVY_DARK)
-    create_slide_header(s9, "Regional Governance: Geographic Risk Concentration", "BRANCH NETWORK")
+    s12 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s12, NAVY_DARK)
+    create_slide_header(s12, "Deliverable 4: Regional Governance & Branch Risk Concentration", "DELIVERABLE 4 (CONT.) — BRANCH GOVERNANCE")
 
-    add_card(s9, Inches(0.8), Inches(1.8), Inches(11.7), Inches(4.8), NAVY_CARD)
-    tb = s9.shapes.add_textbox(Inches(1.1), Inches(2.0), Inches(11.1), Inches(4.4))
+    add_card(s12, Inches(0.8), Inches(1.8), Inches(11.7), Inches(4.8), NAVY_CARD)
+    tb = s12.shapes.add_textbox(Inches(1.1), Inches(2.0), Inches(11.1), Inches(4.4))
     tf = tb.text_frame
     tf.word_wrap = True
 
@@ -527,27 +676,27 @@ By connecting Customer_Service logs directly to Digital_Activity in our Customer
         p.font.size = Pt(11)
         p.font.color.rgb = TEXT_MUTED
 
-    add_speaker_notes(s9, """[SLIDE 9 - BRANCH-LEVEL CONCENTRATION]
+    add_speaker_notes(s12, """[SLIDE 12 - DELIVERABLE 4: BRANCH CONCENTRATION]
 Our analysis demonstrates that silent churn is not evenly dispersed across the bank's 30 branches.
 Just 5 branches account for over ₹129 Crores—nearly 40% of the entire at-risk deposit base.
-Branch BR-104 alone has ₹34.8 Crores at risk. When we cross-referenced operational data, we found that BR-104 manages high-net-worth commercial clients who suffered multiple NetBanking outages.
-Meanwhile, BR-112's risk is entirely service-driven: resolution TAT is double the bank average.
+Branch BR-104 alone has ₹34.8 Crores at risk due to commercial client NetBanking outages.
+Meanwhile, BR-112's risk is service-driven: resolution TAT is double the bank average.
 This allows leadership to deploy targeted regional resources where capital flight is concentrated.""")
 
     # ══════════════════════════════════════════════════════════════
-    # SLIDE 10: Management Action Plan
+    # SLIDE 13: Management Action Plan & Governance Controls
     # ══════════════════════════════════════════════════════════════
-    s10 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s10, NAVY_DARK)
-    create_slide_header(s10, "Prescriptive Action Matrix: Signal to Operational Workflow", "ACTION PLAN")
+    s13 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s13, NAVY_DARK)
+    create_slide_header(s13, "Prescriptive Management Action Matrix & Governance Controls", "ACTION PLAN & GOVERNANCE")
 
-    add_card(s10, Inches(0.8), Inches(1.8), Inches(11.7), Inches(4.8), NAVY_CARD)
-    tb = s10.shapes.add_textbox(Inches(1.1), Inches(2.0), Inches(11.1), Inches(4.4))
+    add_card(s13, Inches(0.8), Inches(1.8), Inches(11.7), Inches(4.8), NAVY_CARD)
+    tb = s13.shapes.add_textbox(Inches(1.1), Inches(2.0), Inches(11.1), Inches(4.4))
     tf = tb.text_frame
     tf.word_wrap = True
 
     p = tf.paragraphs[0]
-    p.text = "Operational Accountability Matrix [RECOMMENDED]"
+    p.text = "Operational Accountability Matrix & 3-Tier Governance [RECOMMENDED]"
     p.font.size = Pt(15)
     p.font.bold = True
     p.font.color.rgb = CYAN_ACCENT
@@ -557,79 +706,29 @@ This allows leadership to deploy targeted regional resources where capital fligh
         "2. Service Disruption Trigger ➔ Service Recovery Protocol: Automatic grievance escalation for high-balance clients; discretionary fee reversal up to ₹5,000 for verified delays. | Owner: Head of Customer Experience | Priority: P1 - Immediate.",
         "3. Digital Inactivity Warning ➔ Re-engagement Nudge: Automated SMS/email prompt highlighting upgraded app features and biometric quick-login. | Owner: Head of Digital Channels | Priority: P2 - High.",
         "4. Credit Stress Cluster ➔ Proactive Restructuring: Outreach by branch credit officers before 90-day DPD cliff; loan tenure extension options. | Owner: Chief Risk Officer / Retail Credit | Priority: P2 - High.",
-        "5. Identity & KYC Defects ➔ Digital Document Portal: In-app video-KYC link sent to 480 duplicate PAN and 306 missing KYC accounts. | Owner: Head of Compliance & Operations | Priority: P1 - Regulatory."
+        "5. Identity & KYC Defects ➔ Digital Document Portal: In-app video-KYC link sent to 480 duplicate PAN and 306 missing KYC accounts. | Owner: Head of Compliance & Operations | Priority: P1 - Regulatory.",
+        "6. Preventive & Detective Governance: Hard gateway API constraints (preventing invalid PAN regex and future dates) + daily automated DQ monitoring scans."
     ]
     for am in actions_matrix:
         p = tf.add_paragraph()
         p.text = f"\n{am}"
-        p.font.size = Pt(11)
+        p.font.size = Pt(10.5)
         p.font.color.rgb = WHITE
 
-    add_speaker_notes(s10, """[SLIDE 10 - ACTION PLAN]
+    add_speaker_notes(s13, """[SLIDE 13 - ACTION PLAN & GOVERNANCE]
 Analytics without execution is overhead.
-Slide 10 provides the executive operating model: mapping every signal to an explicit action, an executive owner, and a priority tier.
+Slide 13 provides the executive operating model: mapping every signal to an explicit action, an executive owner, and a priority tier.
 - Head of Wealth Banking owns P1 outreach for the top 198 accounts.
-- Head of Customer Experience institutes an immediate Service Recovery Protocol, authorizing instant fee reversals for long-pending complaints.
-- Head of Digital Channels automates re-engagement nudges for inactive app users.
-- Compliance and Operations takes ownership of remediating the duplicate PANs and missing KYC records.""")
+- Head of Customer Experience institutes an immediate Service Recovery Protocol.
+- Head of Digital Channels automates re-engagement nudges.
+- Compliance and Operations remediates duplicate PANs and missing KYC records.""")
 
     # ══════════════════════════════════════════════════════════════
-    # SLIDE 11: Data Governance Controls
+    # SLIDE 14: Strategic Execution Roadmap (30-60-90 Days)
     # ══════════════════════════════════════════════════════════════
-    s11 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s11, NAVY_DARK)
-    create_slide_header(s11, "Enterprise Data Governance & Quality Architecture", "DATA GOVERNANCE")
-
-    gov_cards = [
-        ("PREVENTIVE CONTROLS", TEAL_PASS, [
-            "• Gateway Regex Validation: Real-time PAN (10-char alphanumeric) and email validation at onboarding.",
-            "• Temporal Integrity Constraints: System rejection of future onboarding or account open dates.",
-            "• Uniqueness Check: Core banking pre-ingestion check blocking duplicate PAN creations."
-        ]),
-        ("DETECTIVE MONITORING", AMBER_WARN, [
-            "• Automated Daily DQ Scans: DQ Engine runs daily across all 6 DAMA dimensions.",
-            "• Defect Quarantine Engine: Records failing critical rules auto-routed to data/quarantine/.",
-            "• Entity Resolution Watchdog: Weekly RapidFuzz clustering to identify emerging duplicate identities."
-        ]),
-        ("GOVERNANCE COUNCIL", CYAN_ACCENT, [
-            "• Enterprise Data Governance Council: Monthly ExCo review of DQ Scorecards.",
-            "• SLA & Penalties: Branch operations evaluated on KYC remediation and data entry defect rates.",
-            "• Audit Readiness: Complete traceability from raw CSV to Power BI model with zero data leakage."
-        ])
-    ]
-
-    left_pos = 0.8
-    for title, col, bullets in gov_cards:
-        add_card(s11, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(4.8), NAVY_CARD, col)
-        tb = s11.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.95), Inches(3.4), Inches(4.5))
-        tf = tb.text_frame
-        tf.word_wrap = True
-        
-        p = tf.paragraphs[0]
-        p.text = title
-        p.font.size = Pt(13)
-        p.font.bold = True
-        p.font.color.rgb = col
-        
-        for b in bullets:
-            p = tf.add_paragraph()
-            p.text = f"\n{b}"
-            p.font.size = Pt(10)
-            p.font.color.rgb = TEXT_MUTED
-        left_pos += 4.0
-
-    add_speaker_notes(s11, """[SLIDE 11 - GOVERNANCE CONTROLS]
-To ensure our data never degrades back into its initial fragmented state, we established a three-tier Data Governance Framework:
-1. PREVENTIVE CONTROLS: Hard schema constraints at the core banking API gateway. No clerk can enter a future date or an invalid PAN format again.
-2. DETECTIVE CONTROLS: Our Python Data Quality engine runs automated daily audits, publishing the scorecard to output/ and sequestering bad records in quarantine.
-3. GOVERNANCE COUNCIL: Data quality metrics will be tied directly to branch manager KPIs.""")
-
-    # ══════════════════════════════════════════════════════════════
-    # SLIDE 12: Next Steps & Execution Roadmap
-    # ══════════════════════════════════════════════════════════════
-    s12 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s12, NAVY_DARK)
-    create_slide_header(s12, "Strategic Execution Roadmap: 30-60-90 Day Phasing", "ROADMAP")
+    s14 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s14, NAVY_DARK)
+    create_slide_header(s14, "Strategic Execution Roadmap: 30-60-90 Day Phasing", "ROADMAP & NEXT STEPS")
 
     roadmap_items = [
         ("DAYS 1–30: TRIAGE & HIGH-VALUE RETENTION", RED_ALERT, [
@@ -654,8 +753,8 @@ To ensure our data never degrades back into its initial fragmented state, we est
 
     left_pos = 0.8
     for title, col, bullets in roadmap_items:
-        add_card(s12, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(4.8), NAVY_CARD, col)
-        tb = s12.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.95), Inches(3.4), Inches(4.5))
+        add_card(s14, Inches(left_pos), Inches(1.8), Inches(3.7), Inches(4.8), NAVY_CARD, col)
+        tb = s14.shapes.add_textbox(Inches(left_pos + 0.15), Inches(1.95), Inches(3.4), Inches(4.5))
         tf = tb.text_frame
         tf.word_wrap = True
         
@@ -672,9 +771,9 @@ To ensure our data never degrades back into its initial fragmented state, we est
             p.font.color.rgb = TEXT_MUTED
         left_pos += 4.0
 
-    add_speaker_notes(s12, """[SLIDE 12 - ROADMAP AND CONCLUSION]
+    add_speaker_notes(s14, """[SLIDE 14 - ROADMAP AND CONCLUSION]
 Finally, here is our 30-60-90 day execution roadmap:
-In the first 30 days, we stop the bleeding. We contact the top 198 Archetype A customers to protect ₹112 Crores in immediate flight risk, and we clean up the 480 duplicate PAN records.
+In the first 30 days, we stop the bleeding. We contact the top 198 Archetype A customers to protect ₹112 Crores in immediate flight risk, and clean up the 480 duplicate PAN records.
 In days 31 to 60, we tackle operational root causes: fixing the service bottleneck in branch BR-112 and reviving digital engagement.
 In days 61 to 90, we institutionalize the Customer 360 pipeline into core CRM systems.
 With this roadmap, Apex Retail Bank transitions from reactive account closure firefighting to proactive, data-driven balance sheet protection.
@@ -682,8 +781,15 @@ Thank you, and we welcome your questions.""")
 
     # ── Save Presentation ──
     deck_path = OUTPUT_DIR / "Apex_Retail_Bank_Executive_Deck.pptx"
-    prs.save(deck_path)
-    logger.info(f"✅ Saved executive deck to {deck_path}")
+    try:
+        prs.save(deck_path)
+        logger.info(f"✅ Saved updated 14-slide executive deck to {deck_path}")
+    except PermissionError:
+        fallback_path = OUTPUT_DIR / "Apex_Retail_Bank_Executive_Presentation.pptx"
+        prs.save(fallback_path)
+        logger.warning(f"⚠️ {deck_path.name} is currently open/locked in PowerPoint.")
+        logger.info(f"✅ Saved updated 14-slide executive deck to {fallback_path}")
+        deck_path = fallback_path
     return deck_path
 
 if __name__ == "__main__":
