@@ -119,8 +119,8 @@ def build_executive_deck():
     add_speaker_notes(s1, """[SLIDE 1 - TITLE]
 Good morning, members of the Executive Committee and esteemed faculty judges.
 Today, we present the end-to-end data transformation, data quality remediation, and silent churn intelligence framework for Apex Retail Bank.
-Apex Retail Bank manages 10,200 core retail customers and over ₹1,365 Crores in deposits. However, behind stable topline numbers, the bank faces an insidious threat: silent churn—customers quietly draining funds without closing accounts.
-Our framework builds a unified Customer 360 architecture, resolves critical data quality vulnerabilities, isolates ₹337.89 Crores of at-risk deposits, and delivers an explainable, archetype-driven intervention engine.""")
+Apex Retail Bank manages 10,200 core retail customers and ₹131.09 Crores in total deposit balances across 14,000 accounts. However, behind stable headline customer counts, the bank faces an insidious threat: silent churn—customers quietly draining funds without closing accounts.
+Our framework builds a unified Customer 360 architecture, resolves critical data quality vulnerabilities, isolates ₹67.33 Crores of at-risk deposits (51.4% of total balances), and delivers an explainable, archetype-driven intervention engine.""")
 
     # ══════════════════════════════════════════════════════════════
     # SLIDE 2: Executive Summary
@@ -131,8 +131,8 @@ Our framework builds a unified Customer 360 architecture, resolves critical data
 
     cards_data = [
         ("WHAT IS HAPPENING?", "[OBSERVED]", "23.5% of Customer Base (2,402 Customers) exhibit severe silent churn signals—quietly transferring funds out while digital app engagement deteriorates.", RED_ALERT),
-        ("WHY DOES IT MATTER?", "[DERIVED]", "₹337.89 Crores in retail deposits (24.7% of total portfolio) are directly exposed to flight risk, concentrated heavily in high-margin Wealth & Privileged tiers.", AMBER_WARN),
-        ("WHICH SEGMENTS ARE EXPOSED?", "[DERIVED]", "Wealth segment faces 48% of total deposit flight exposure. 5 core branch hubs account for 38% of at-risk balances, exacerbated by customer service friction.", GOLD_ACCENT),
+        ("WHY DOES IT MATTER?", "[DERIVED]", "₹67.33 Crores in retail deposits (51.4% of total portfolio) are directly exposed to flight risk, concentrated heavily in high-margin Wealth & Privileged tiers.", AMBER_WARN),
+        ("WHICH SEGMENTS ARE EXPOSED?", "[DERIVED]", "Wealth segment accounts for 59.0% of at-risk deposits (₹39.73 Cr) with a 61.0% segment balance risk rate. Top 5 branches hold ₹14.39 Cr at risk.", GOLD_ACCENT),
         ("WHAT SHOULD MANAGEMENT DO?", "[RECOMMENDED]", "Execute a 6-Archetype Action Plan: prioritized 48-hour RM outreach for high-value clients, KYC & data cleanup, and proactive resolution of dispute-heavy channels.", TEAL_PASS),
     ]
 
@@ -165,8 +165,8 @@ Our framework builds a unified Customer 360 architecture, resolves critical data
     add_speaker_notes(s2, """[SLIDE 2 - EXECUTIVE SUMMARY]
 Here is the core summary for leadership:
 1. WHAT IS HAPPENING? [OBSERVED]: We analyzed 150,000 transactions and 150,000 digital sessions across all 10,200 customers. Exactly 2,402 customers (23.5%) are in the High or Very High risk bands.
-2. WHY DOES IT MATTER? [DERIVED]: These at-risk accounts hold ₹337.89 Crores in deposits—that is one-quarter of the bank's total retail balance sheet.
-3. WHO IS EXPOSED? [DERIVED]: While Mass Retail has more heads, the Wealth segment represents almost half of the at-risk deposit money. Furthermore, risk is regionally concentrated.
+2. WHY DOES IT MATTER? [DERIVED]: These at-risk accounts hold ₹67.33 Crores in deposits—that is over half (51.4%) of the bank's total retail deposit base of ₹131.09 Crores.
+3. WHO IS EXPOSED? [DERIVED]: While Mass Retail has more customer accounts, the Wealth segment represents nearly 60% of all at-risk deposits (₹39.73 Cr). Furthermore, risk is regionally concentrated across key urban branches.
 4. WHAT SHOULD WE DO? [RECOMMENDED]: We have mapped every at-risk customer to 1 of 6 operational archetypes with designated workflows.""")
 
     # ══════════════════════════════════════════════════════════════
@@ -189,7 +189,7 @@ Here is the core summary for leadership:
             "• Orphan Transactions (DQ-022) [OBSERVED]: 1,488 txns reference non-existent Account_IDs. Must be quarantined to avoid phantom postings.",
             "• Orphan Loans (DQ-023) [OBSERVED]: 25 loans reference Customer_IDs not in Customer_Master. Direct credit exposure without KYC backing.",
             "• Join Inflation Prevention [DERIVED]: Direct 1:N fan-out joins between Accounts and Transactions cause massive balance inflation if merged naively. Solved via domain pre-aggregation.",
-            "• Financial Balance Reconciliation: Accounts total ₹1,365.42 Cr matches Customer 360 exactly (0.00% discrepancy)."
+            "• Financial Balance Reconciliation: Accounts total ₹131.09 Cr matches Customer 360 exactly (0.00% discrepancy)."
         ]),
         ("MATCHING RULES & ENFORCEMENT", GOLD_ACCENT, [
             "• Customer Anchor: Customer_Master serves as the single anchor entity.",
@@ -224,7 +224,7 @@ Deliverable 1 requires establishing the grain, keys, missingness, matching rules
 Key discoveries:
 1. INVENTORY: We inventoried all 6 files: Customer_Master (10,200), Accounts (14,000), Transactions (150,000), Loans (5,000), Customer_Service (12,000), and Digital_Activity (150,000).
 2. RELATIONAL FLAWS: We uncovered 1,488 orphan transactions that have no parent account, and 25 orphan loans with no customer record!
-3. JOIN INFLATION PREVENTION: Merging transactions and accounts naively causes severe fan-out that inflates customer balances. We pre-aggregated transaction metrics per account and customer before joining to Customer_Master, proving 100% financial balance reconciliation to ₹1,365.42 Crores.""")
+3. JOIN INFLATION PREVENTION: Merging transactions and accounts naively causes severe fan-out that inflates customer balances. We pre-aggregated transaction metrics per account and customer before joining to Customer_Master, proving 100% financial balance reconciliation to ₹131.09 Crores.""")
 
     # ══════════════════════════════════════════════════════════════
     # SLIDE 4: DELIVERABLE 1 — 18 Commercial & Analytical Questions
@@ -438,9 +438,9 @@ Notice Dimension 6: Data Confidence Adjustment. Customers with KYC gaps or orpha
     create_slide_header(s8, "Deliverable 4: Portfolio Exposure — Customer Value vs. Risk", "DELIVERABLE 4 (CONT.) — FINANCIAL EXPOSURE")
 
     kpi_banner = [
-        ("Total Retail Deposit Portfolio", "₹1,365.42 Cr", "10,200 Customers", CYAN_ACCENT),
-        ("Total Balance at Churn Risk", "₹337.89 Cr", "24.7% of Portfolio Liabilities", RED_ALERT),
-        ("Wealth Segment Exposure", "₹162.24 Cr", "48.0% of Total Balance at Risk", GOLD_ACCENT)
+        ("Total Retail Deposit Portfolio", "₹131.09 Cr", "10,200 Customers", CYAN_ACCENT),
+        ("Total Balance at Churn Risk", "₹67.33 Cr", "51.4% of Portfolio Liabilities", RED_ALERT),
+        ("Wealth Segment Exposure", "₹39.73 Cr", "59.0% of Total Balance at Risk", GOLD_ACCENT)
     ]
     left_pos = 0.8
     for label, val, sub, col in kpi_banner:
@@ -474,10 +474,10 @@ Notice Dimension 6: Data Confidence Adjustment. Customers with KYC gaps or orpha
     p.font.color.rgb = WHITE
 
     table_lines = [
-        "• Wealth Tier: 1,020 Customers (10.0% of base) | Total Deposits: ₹520.10 Cr | High Risk: 284 Customers | Balance at Risk: ₹162.24 Cr (31.2% of segment). Severe capital concentration.",
-        "• Privileged Tier: 3,060 Customers (30.0% of base) | Total Deposits: ₹465.80 Cr | High Risk: 735 Customers | Balance at Risk: ₹108.50 Cr (23.3% of segment). High digital banking sensitivity.",
-        "• Mass Retail Tier: 6,120 Customers (60.0% of base) | Total Deposits: ₹379.52 Cr | High Risk: 1,383 Customers | Balance at Risk: ₹67.15 Cr (17.7% of segment). Service friction & fee dispute drivers.",
-        "• Strategic Takeaway [RECOMMENDED]: Retention efforts must not be democratic. Losing 1 Wealth client inflicts the same balance sheet damage as losing 25 Mass Retail accounts. Immediate executive focus on top 284 Wealth accounts."
+        "• Wealth Tier: 865 Customers (8.5% of base) | Total Deposits: ₹65.13 Cr | High Risk: 463 Customers (53.5%) | Balance at Risk: ₹39.73 Cr (61.0% of segment). Severe capital concentration.",
+        "• Privileged Tier: 2,099 Customers (20.6% of base) | Total Deposits: ₹37.83 Cr | High Risk: 824 Customers (39.3%) | Balance at Risk: ₹19.67 Cr (52.0% of segment). High digital banking sensitivity.",
+        "• Mass Retail Tier: 7,236 Customers (70.9% of base) | Total Deposits: ₹28.12 Cr | High Risk: 1,115 Customers (15.4%) | Balance at Risk: ₹7.94 Cr (28.2% of segment). Service friction & fee dispute drivers.",
+        "• Strategic Takeaway [RECOMMENDED]: Retention efforts must not be democratic. Wealth accounts carry ₹39.73 Cr in at-risk balances (5x the entire Mass Retail exposure). Immediate frontline focus on top 463 at-risk Wealth accounts."
     ]
     for tl in table_lines:
         p = tf.add_paragraph()
@@ -487,10 +487,10 @@ Notice Dimension 6: Data Confidence Adjustment. Customers with KYC gaps or orpha
 
     add_speaker_notes(s8, """[SLIDE 8 - DELIVERABLE 4: VALUE VS CHURN RISK]
 This slide quantifies the commercial exposure of silent churn:
-Our total portfolio holds ₹1,365.42 Crores. Exactly ₹337.89 Crores is held by 2,402 customers currently drifting toward silent attrition.
+Our total portfolio holds ₹131.09 Crores across 14,000 accounts. Exactly ₹67.33 Crores (51.4%) is held by 2,402 customers currently drifting toward silent attrition.
 Look at the segment breakdown:
-Wealth customers represent only 10% of our customer count, but they represent 48% of the money at risk—over ₹162 Crores!
-Privileged customers account for another ₹108 Crores.
+Wealth customers represent only 8.5% of our customer count (865 customers), but they hold ₹65.13 Crores in deposits and represent nearly 60% of all balance at risk—over ₹39.73 Crores! 61% of all Wealth deposits are under severe flight risk.
+Privileged customers account for another ₹19.67 Crores.
 Therefore, relationship managers cannot treat all churn risks equally. Frontline interventions must be aggressively tiered to protect high-margin liabilities.""")
 
     # ══════════════════════════════════════════════════════════════
@@ -569,12 +569,12 @@ We triangulate three distinct signal pillars:
     p.font.color.rgb = WHITE
 
     archetypes_text = [
-        "• Archetype A — High Value + Multi-Signal Risk (198 Customers | ₹112.4 Cr): High deposit balance + simultaneous outflow, digital decay, and complaints. ➔ PROTOCOL: Priority Senior RM outreach within 48h; personalized wealth retention offer.",
-        "• Archetype B — High Outflow + Weak Supporting Evidence (512 Customers | ₹68.2 Cr): Large single outflow without app decline or complaints (e.g., tax payment or real estate purchase). ➔ PROTOCOL: 30-day monitoring; DO NOT harass customer with churn retention calls.",
-        "• Archetype C — Digital Decline + Service Friction (945 Customers | ₹74.6 Cr): Frustrated digital users with low CSAT and declining logins. ➔ PROTOCOL: Digital service recovery call, fee reversal where applicable, proactive app re-onboarding.",
-        "• Archetype D — Credit Stress Driven Risk (314 Customers | ₹28.5 Cr): Elevated loan DPD (30–90 days) impacting broader banking relationship. ➔ PROTOCOL: Branch credit counseling, debt restructuring review, proactive restructuring counseling.",
-        "• Archetype E — Data Confidence Limited Risk (433 Customers | ₹14.1 Cr): Incomplete KYC or missing profile data rendering risk score noisy. ➔ PROTOCOL: Immediate KYC remediation outreach before taking risk or marketing actions.",
-        "• Archetype F — Baseline / Stable (7,798 Customers | ₹1,067.6 Cr): Normal transaction cadence, moderate to low risk. ➔ PROTOCOL: Standard relationship management."
+        "• Archetype A — High Value + Multi-Signal Risk (165 Customers | ₹23.62 Cr): High deposit balance + simultaneous outflow, digital decay, and complaints. ➔ PROTOCOL: Priority Senior RM outreach within 48h; personalized wealth retention offer.",
+        "• Archetype B — High Outflow + Weak Supporting Evidence (599 Customers | ₹7.90 Cr): Large single outflow without app decline or complaints (e.g., tax payment or real estate purchase). ➔ PROTOCOL: 30-day monitoring; DO NOT harass customer with churn retention calls.",
+        "• Archetype C — Digital Decline + Service Friction (2,779 Customers | ₹27.27 Cr): Frustrated digital users with low CSAT and declining logins. ➔ PROTOCOL: Digital service recovery call, fee reversal where applicable, proactive app re-onboarding.",
+        "• Archetype D — Credit Stress Driven Risk (1,193 Customers | ₹9.96 Cr): Elevated loan DPD (30–90 days) impacting broader banking relationship. ➔ PROTOCOL: Branch credit counseling, debt restructuring review, proactive restructuring counseling.",
+        "• Archetype E — Data Confidence Limited Risk (0 Customers with unresolvable data; 480 duplicate PAN & 306 KYC records prioritized for remediation). ➔ PROTOCOL: In-app video-KYC link & document collection before cross-selling.",
+        "• Archetype F — Baseline / Stable (5,464 Customers | ₹62.33 Cr): Normal transaction cadence, moderate to low risk. ➔ PROTOCOL: Standard relationship management."
     ]
     for at in archetypes_text:
         p = tf.add_paragraph()
@@ -584,9 +584,9 @@ We triangulate three distinct signal pillars:
 
     add_speaker_notes(s10, """[SLIDE 10 - DELIVERABLE 4: 6 ACTIONABLE ARCHETYPES]
 A single composite score is useless to an RM unless it explains *why* the customer is at risk and *what* to do.
-We clustered the at-risk population into 6 mutually exclusive operational archetypes:
-Notice Archetype B: 512 customers had massive outflows, but no service complaints and healthy digital logins. Calling them with desperate retention discounts annoys them. The rule engine prescribes: 'Monitor for 30 days; do not harass.'
-Contrast that with Archetype A: high balances combined with complaints and digital drop-off. These 198 customers represent ₹112 Crores. They get senior RM outreach within 48 hours.""")
+We clustered the customer population into 6 mutually exclusive operational archetypes:
+Notice Archetype B: 599 customers had massive outflows, but no service complaints and healthy digital logins. Calling them with desperate retention discounts annoys them. The rule engine prescribes: 'Monitor for 30 days; do not harass.'
+Contrast that with Archetype A: high balances combined with complaints and digital drop-off. These 165 customers represent ₹23.62 Crores in immediate flight risk. They get senior RM outreach within 48 hours.""")
 
     # ══════════════════════════════════════════════════════════════
     # SLIDE 11: DELIVERABLE 4 — Service & Digital Friction Linkage
@@ -657,18 +657,18 @@ By connecting Customer_Service logs directly to Digital_Activity in our Customer
     tf.word_wrap = True
 
     p = tf.paragraphs[0]
-    p.text = "Top 5 Branch Hotspots Account for 38% of At-Risk Deposits [DERIVED]"
+    p.text = "Top 5 Branch Hotspots Account for ₹14.39 Cr of At-Risk Deposits [DERIVED]"
     p.font.size = Pt(15)
     p.font.bold = True
     p.font.color.rgb = WHITE
 
     branch_findings = [
-        "• Branch BR-104 (Metropolitan Commercial Hub): 340 Customers | Total Deposits: ₹112.5 Cr | Balance at Risk: ₹34.8 Cr (30.9% risk rate). Driven by Wealth tier outflow and digital friction.",
-        "• Branch BR-112 (Suburban Retail Center): 410 Customers | Total Deposits: ₹94.2 Cr | Balance at Risk: ₹28.4 Cr (30.1% risk rate). Driven by high service TAT (average 16.2 days) and fee disputes.",
-        "• Branch BR-108: 380 Customers | Total Deposits: ₹88.1 Cr | Balance at Risk: ₹24.6 Cr. High concentration of credit-stressed retail borrowers (NPA cluster).",
-        "• Branch BR-121: 295 Customers | Total Deposits: ₹76.4 Cr | Balance at Risk: ₹22.1 Cr. Primary issue: pending KYC documentation causing account freeze frustrations.",
-        "• Branch BR-115: 350 Customers | Total Deposits: ₹71.0 Cr | Balance at Risk: ₹19.8 Cr. High mobile banking complaint density.",
-        "• Governance Mandate [RECOMMENDED]: Regional directors must not issue generic churn targets. Branch Managers at BR-104 and BR-112 require dedicated retention taskforces and dedicated service resolution liaisons."
+        "• Branch BR004 (Metropolitan Commercial Hub): 243 Customers | Total Deposits: ₹4.68 Cr | Balance at Risk: ₹3.26 Cr (69.5% risk rate) | 281 complaints, CSAT 3.75. Driven by Wealth tier outflow and digital friction.",
+        "• Branch BR001 (Urban Flagship Center): 285 Customers | Total Deposits: ₹4.36 Cr | Balance at Risk: ₹3.17 Cr (72.8% risk rate) | 350 complaints, CSAT 3.58, 2 NPAs. High service friction and dispute concentration.",
+        "• Branch BR023: 196 Customers | Total Deposits: ₹4.50 Cr | Balance at Risk: ₹2.82 Cr (62.6% risk rate) | 238 complaints. High average customer balance with declining mobile engagement.",
+        "• Branch BR014: 254 Customers | Total Deposits: ₹3.89 Cr | Balance at Risk: ₹2.60 Cr (66.7% risk rate) | 310 complaints. High debit outflow acceleration to competitor accounts.",
+        "• Branch BR012: 265 Customers | Total Deposits: ₹4.08 Cr | Balance at Risk: ₹2.54 Cr (62.2% risk rate) | 322 complaints, 2 NPAs. Dual service delays and credit delinquency.",
+        "• Governance Mandate [RECOMMENDED]: Regional directors must not issue generic churn targets. Top 5 branches account for 21.4% of all at-risk deposits and 1,501 complaints. Branch Managers at BR004 and BR001 require dedicated retention taskforces and senior RM liaisons."
     ]
     for bf in branch_findings:
         p = tf.add_paragraph()
@@ -677,11 +677,11 @@ By connecting Customer_Service logs directly to Digital_Activity in our Customer
         p.font.color.rgb = TEXT_MUTED
 
     add_speaker_notes(s12, """[SLIDE 12 - DELIVERABLE 4: BRANCH CONCENTRATION]
-Our analysis demonstrates that silent churn is not evenly dispersed across the bank's 30 branches.
-Just 5 branches account for over ₹129 Crores—nearly 40% of the entire at-risk deposit base.
-Branch BR-104 alone has ₹34.8 Crores at risk due to commercial client NetBanking outages.
-Meanwhile, BR-112's risk is service-driven: resolution TAT is double the bank average.
-This allows leadership to deploy targeted regional resources where capital flight is concentrated.""")
+Our analysis demonstrates that silent churn is concentrated across key urban and commercial hubs among the bank's 50 branches.
+Just 5 branches (BR004, BR001, BR023, BR014, and BR012) account for ₹14.39 Crores in at-risk deposits and over 1,500 customer complaints.
+Branch BR004 alone has ₹3.26 Crores at risk with a 69.5% risk rate, driven by high-balance Wealth client outflows.
+Meanwhile, BR001 combines ₹3.17 Crores at risk with our lowest customer CSAT (3.58) and active NPAs.
+This allows leadership to deploy targeted regional resources exactly where capital flight is concentrated.""")
 
     # ══════════════════════════════════════════════════════════════
     # SLIDE 13: Management Action Plan & Governance Controls
@@ -718,7 +718,7 @@ This allows leadership to deploy targeted regional resources where capital fligh
     add_speaker_notes(s13, """[SLIDE 13 - ACTION PLAN & GOVERNANCE]
 Analytics without execution is overhead.
 Slide 13 provides the executive operating model: mapping every signal to an explicit action, an executive owner, and a priority tier.
-- Head of Wealth Banking owns P1 outreach for the top 198 accounts.
+- Head of Wealth Banking owns P1 outreach for the top 165 Archetype A accounts.
 - Head of Customer Experience institutes an immediate Service Recovery Protocol.
 - Head of Digital Channels automates re-engagement nudges.
 - Compliance and Operations remediates duplicate PANs and missing KYC records.""")
@@ -733,12 +733,12 @@ Slide 13 provides the executive operating model: mapping every signal to an expl
     roadmap_items = [
         ("DAYS 1–30: TRIAGE & HIGH-VALUE RETENTION", RED_ALERT, [
             "• Deploy RM Outreach Console to all Wealth Relationship Managers.",
-            "• Contact Top 198 Archetype A customers (protect ₹112.4 Cr).",
+            "• Contact Top 165 Archetype A customers (protect ₹23.62 Cr).",
             "• Remediate 480 duplicate PAN identities and 306 missing KYC records.",
             "• Establish weekly DQ exception monitoring meetings."
         ]),
         ("DAYS 31–60: OPERATIONAL REPAIR & BRANCH INTERVENTION", AMBER_WARN, [
-            "• Dispatch service recovery squads to Top 5 risk branches (BR-104, BR-112, etc.).",
+            "• Dispatch service recovery squads to Top 5 risk branches (BR004, BR001, BR023, BR014, BR012).",
             "• Implement 7-day SLA cap on Transaction Dispute complaint categories.",
             "• Launch mobile app re-engagement push for 3,781 inactive digital accounts.",
             "• Ingest daily Power BI dashboards for regional directors."
@@ -747,7 +747,7 @@ Slide 13 provides the executive operating model: mapping every signal to an expl
             "• Automate daily lakehouse ingestion pipeline from core banking systems.",
             "• Integrate Silent Churn Risk Index into frontline CRM screen (real-time risk badge).",
             "• Calibrate credit stress early-warning triggers with loan collection units.",
-            "• Measure net deposit retention: Target ₹150+ Cr in preserved retail deposits."
+            "• Measure net deposit retention: Target ₹30+ Cr in preserved retail deposits."
         ])
     ]
 
@@ -773,24 +773,25 @@ Slide 13 provides the executive operating model: mapping every signal to an expl
 
     add_speaker_notes(s14, """[SLIDE 14 - ROADMAP AND CONCLUSION]
 Finally, here is our 30-60-90 day execution roadmap:
-In the first 30 days, we stop the bleeding. We contact the top 198 Archetype A customers to protect ₹112 Crores in immediate flight risk, and clean up the 480 duplicate PAN records.
-In days 31 to 60, we tackle operational root causes: fixing the service bottleneck in branch BR-112 and reviving digital engagement.
+In the first 30 days, we stop the bleeding. We contact the top 165 Archetype A customers to protect ₹23.62 Crores in immediate flight risk, and clean up the 480 duplicate PAN records.
+In days 31 to 60, we tackle operational root causes: fixing service bottlenecks in branches BR004 and BR001 and reviving digital engagement.
 In days 61 to 90, we institutionalize the Customer 360 pipeline into core CRM systems.
 With this roadmap, Apex Retail Bank transitions from reactive account closure firefighting to proactive, data-driven balance sheet protection.
 Thank you, and we welcome your questions.""")
 
-    # ── Save Presentation ──
-    deck_path = OUTPUT_DIR / "Apex_Retail_Bank_Executive_Deck.pptx"
+    # ── Save Presentation (Save to BOTH locations to keep both files identical and updated) ──
+    primary_deck = OUTPUT_DIR / "Apex_Retail_Bank_Executive_Presentation.pptx"
+    legacy_deck = OUTPUT_DIR / "Apex_Retail_Bank_Executive_Deck.pptx"
+    
+    prs.save(primary_deck)
+    logger.info(f"✅ Saved updated 14-slide executive presentation to {primary_deck}")
     try:
-        prs.save(deck_path)
-        logger.info(f"✅ Saved updated 14-slide executive deck to {deck_path}")
+        prs.save(legacy_deck)
+        logger.info(f"✅ Synced updated 14-slide executive deck to {legacy_deck}")
     except PermissionError:
-        fallback_path = OUTPUT_DIR / "Apex_Retail_Bank_Executive_Presentation.pptx"
-        prs.save(fallback_path)
-        logger.warning(f"⚠️ {deck_path.name} is currently open/locked in PowerPoint.")
-        logger.info(f"✅ Saved updated 14-slide executive deck to {fallback_path}")
-        deck_path = fallback_path
-    return deck_path
+        logger.warning(f"⚠️ {legacy_deck.name} is locked by PowerPoint. Primary deck saved successfully.")
+    
+    return primary_deck
 
 if __name__ == "__main__":
     build_executive_deck()

@@ -23,4 +23,5 @@ $$\text{Silent Churn Risk Index} = \text{Dim}_1 + \text{Dim}_2 + \text{Dim}_3 + 
 - **Moderate (30 – 50)**: 7,192 Customers (70.5%)
 - **High (50 – 70)**: 2,401 Customers (23.5%)
 - **Very High (70 – 100)**: 1 Customer (0.01%)
-- **Combined At-Risk (High + Very High)**: 2,402 Customers holding **₹337.89 Crores** in deposits.
+- **Combined At-Risk (High + Very High)**: 2,402 Customers holding **₹67.33 Crores** in deposits (51.37% of portfolio liabilities).
+

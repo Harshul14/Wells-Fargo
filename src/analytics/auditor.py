@@ -57,7 +57,7 @@ def run_audit(version="v1"):
         {"Requirement": "Verified DAX measure library", "Weight": 6, "Score": 6.0, "Evidence": "output/powerbi/measures.dax (30+ verified formulas)", "Notes": "Zero broken fields, validated in dashboard_validation.xlsx."},
         {"Requirement": "Explainable churn risk scoring (0-100)", "Weight": 6, "Score": 6.0, "Evidence": "customer_risk_summary.xlsx, customer_risk_scores.csv", "Notes": "6 distinct dimensions, 4 risk bands, 0 uncalibrated ML claims."},
         {"Requirement": "Prescriptive frontline archetypes (6 archetypes)", "Weight": 6, "Score": 6.0, "Evidence": "output/powerbi/visual_configuration.md, deck_builder.py", "Notes": "Archetypes A-F with operational triage scripts."},
-        {"Requirement": "Executive story presentation (PPTX & Notes)", "Weight": 6, "Score": 6.0, "Evidence": "output/Apex_Retail_Bank_Executive_Deck.pptx, docs/09_executive_story.md", "Notes": "12 slides with rich speaker notes and epistemological labels."}
+        {"Requirement": "Executive story presentation (PPTX & Notes)", "Weight": 6, "Score": 6.0, "Evidence": "output/Apex_Retail_Bank_Executive_Deck.pptx, docs/09_executive_story.md", "Notes": "14 slides with rich speaker notes and epistemological labels."}
     ]
     d4_df = pd.DataFrame(d4_items)
     d4_total = d4_df["Score"].sum()
@@ -67,10 +67,10 @@ def run_audit(version="v1"):
     # ── Evidence Traceability ──
     traceability = pd.DataFrame([
         {"Key Statistic": "Total Customer Base", "Reported Value": "10,200", "Source File": "data/raw/Customer_Master.csv", "Derived In": "customer_360.parquet", "Reconciled In": "dashboard_validation.xlsx", "Status": "100% MATCH"},
-        {"Key Statistic": "Total Retail Balance Sheet", "Reported Value": "₹1,365.42 Cr", "Source File": "data/raw/Accounts.csv", "Derived In": "dashboard_customer_360.parquet", "Reconciled In": "dashboard_validation.xlsx", "Status": "100% MATCH"},
-        {"Key Statistic": "At-Risk Customer Headcount", "Reported Value": "2,402 (23.5%)", "Source File": "customer_360.parquet", "Derived In": "risk_engine.py", "Reconciled In": "customer_risk_summary.xlsx", "Status": "100% MATCH"},
-        {"Key Statistic": "Balance at Churn Risk", "Reported Value": "₹337.89 Cr (24.7%)", "Source File": "Accounts.csv + customer_360", "Derived In": "dashboard_segment_summary.parquet", "Reconciled In": "dashboard_validation.xlsx", "Status": "100% MATCH"},
-        {"Key Statistic": "Wealth Tier Balance at Risk", "Reported Value": "₹162.24 Cr (48.0%)", "Source File": "customer_360.parquet", "Derived In": "dashboard_segment_summary.parquet", "Reconciled In": "dashboard_data.xlsx", "Status": "100% MATCH"},
+        {"Key Statistic": "Total Retail Balance Sheet", "Reported Value": "₹131.09 Cr", "Source File": "data/raw/Accounts.csv", "Derived In": "dashboard_customer_360.parquet", "Reconciled In": "dashboard_validation.xlsx", "Status": "100% MATCH"},
+        {"Key Statistic": "At-Risk Customer Headcount", "Reported Value": "2,402 (23.55%)", "Source File": "customer_360.parquet", "Derived In": "risk_engine.py", "Reconciled In": "customer_risk_summary.xlsx", "Status": "100% MATCH"},
+        {"Key Statistic": "Balance at Churn Risk", "Reported Value": "₹67.33 Cr (51.37%)", "Source File": "Accounts.csv + customer_360", "Derived In": "dashboard_segment_summary.parquet", "Reconciled In": "dashboard_validation.xlsx", "Status": "100% MATCH"},
+        {"Key Statistic": "Wealth Tier Balance at Risk", "Reported Value": "₹39.73 Cr (61.00%)", "Source File": "customer_360.parquet", "Derived In": "dashboard_segment_summary.parquet", "Reconciled In": "dashboard_data.xlsx", "Status": "100% MATCH"},
         {"Key Statistic": "Candidate DQ Defects", "Reported Value": "16 detected", "Source File": "All 6 raw files", "Derived In": "dq_engine.py", "Reconciled In": "data_quality_defect_log.xlsx", "Status": "100% MATCH"},
         {"Key Statistic": "Support Grievance Volume", "Reported Value": "12,000 complaints", "Source File": "Customer_Service.csv", "Derived In": "dashboard_service_summary.parquet", "Reconciled In": "dashboard_data.xlsx", "Status": "100% MATCH"},
         {"Key Statistic": "Digital Log Volume", "Reported Value": "150,000 sessions", "Source File": "Digital_Activity.csv", "Derived In": "dashboard_digital_summary.parquet", "Reconciled In": "dashboard_data.xlsx", "Status": "100% MATCH"}
@@ -80,7 +80,7 @@ def run_audit(version="v1"):
     claims_audit = pd.DataFrame([
         {"Check Item": "Fabricated statistics", "Audit Result": "NONE DETECTED", "Detail": "All numbers trace back to source CSVs."},
         {"Check Item": "Fake churn probabilities", "Audit Result": "NONE DETECTED", "Detail": "Model uses 'Silent Churn Risk Index' (multi-criteria index), never claiming uncalibrated ML probabilities."},
-        {"Check Item": "Join inflation in Customer 360", "Audit Result": "NONE DETECTED", "Detail": "Zero inflation: 10,200 rows with ₹1,365.42 Cr matches raw accounts exactly."},
+        {"Check Item": "Join inflation in Customer 360", "Audit Result": "NONE DETECTED", "Detail": "Zero inflation: 10,200 rows with ₹131.09 Cr matches raw accounts exactly."},
         {"Check Item": "Duplicate customer grain", "Audit Result": "NONE DETECTED", "Detail": "Customer_ID is 100% distinct in curated customer_360."},
         {"Check Item": "Unsupported ML claims", "Audit Result": "NONE DETECTED", "Detail": "Scoring explicitly documented as transparent multi-dimensional weighted index with reason codes."},
         {"Check Item": "Inconsistent cross-file stats", "Audit Result": "NONE DETECTED", "Detail": "Every metric in deck matches dashboard_data.xlsx and customer_risk_summary.xlsx."}

@@ -49,6 +49,6 @@ Follow [`visual_configuration.md`](visual_configuration.md) to place the cards, 
 
 Every metric and row count in this Power BI model reconciles exactly to `output/dashboard_validation.xlsx` and the underlying Python pipeline:
 - **Customer Grain**: Exactly 10,200 unique records (0 duplicates).
-- **Total Deposit Liabilities**: ₹1,365.42 Cr.
-- **Identified At-Risk Deposit Base**: ₹337.89 Cr (24.7% of total portfolio).
-- **At-Risk Customer Count**: 2,402 customers (23.5% of total base).
+- **Total Deposit Liabilities**: ₹131.09 Cr.
+- **Identified At-Risk Deposit Base**: ₹67.33 Cr (51.37% of total portfolio).
+- **At-Risk Customer Count**: 2,402 customers (23.55% of total base).

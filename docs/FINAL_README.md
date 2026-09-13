@@ -98,7 +98,7 @@ The ONLY manual steps remaining are human review and submission:
 
 | Step | Action Required | Application | Target Artifact | Estimated Time | Notes |
 |:---:|:---|:---|:---|:---:|:---|
-| **1** | **Review PowerPoint Deck** | Microsoft PowerPoint | `output/Apex_Retail_Bank_Executive_Deck.pptx` | **5–10 mins** | Open the presentation, review the 12 slides and presenter notes before presenting to the judges. |
+| **1** | **Review PowerPoint Deck** | Microsoft PowerPoint | `output/Apex_Retail_Bank_Executive_Deck.pptx` | **5–10 mins** | Open the presentation, review the 14 slides and presenter notes before presenting to the judges. |
 | **2** | **Arrange Visuals in Power BI Desktop (Optional)** | Power BI Desktop | `output/powerbi/visual_configuration.md` | **20–30 mins** | Open Power BI Desktop, click *Get Data* ➔ select the 5 tables in `data/curated/`, copy DAX formulas from `output/powerbi/measures.dax`, and place visuals per `visual_configuration.md`. |
 | **3** | **Submit Case Files** | Web Browser / Zip | Project Root | **2 mins** | Zip or upload the project folder containing the reports, code, and presentation. |
 
@@ -107,10 +107,10 @@ The ONLY manual steps remaining are human review and submission:
 ## 📊 Core Reconciled Metrics Summary
 
 - **Total Active Customer Base**: **10,200** unique individuals.
-- **Total Retail Deposit Liabilities**: **₹1,365.42 Crores** (100% reconciled to raw Accounts).
-- **Silent Churn At-Risk Customers**: **2,402** customers (23.5% of active base).
-- **Deposit Liabilities at Risk**: **₹337.89 Crores** (24.7% of portfolio balances).
-- **Wealth Segment Flight Risk**: **₹162.24 Crores** (48.0% of total balance at risk).
+- **Total Retail Deposit Liabilities**: **₹131.09 Crores** (100% reconciled to raw Accounts).
+- **Silent Churn At-Risk Customers**: **2,402** customers (23.55% of active base).
+- **Deposit Liabilities at Risk**: **₹67.33 Crores** (51.37% of portfolio balances).
+- **Wealth Segment Flight Risk**: **₹39.73 Crores** (61.00% of Wealth deposits; 59.00% of total balance at risk).
 - **Candidate Data Quality Defects**: **16 real defects** detected across 6 DAMA dimensions (7 Critical, 7 High, 2 Medium).
 - **Customer 360 Join Inflation**: **0.00%** (zero duplicated rows, exactly 1 row per customer).
 - **Pytest Regression Suite**: **11 / 11 tests passing (100%)**.

@@ -47,10 +47,10 @@ Designed for the **Executive Committee (ExCo)** and **Head of Retail Banking**.
 
 * **Top KPI Ribbon**:
   1. **Total Retail Base**: 10,200 Customers
-  2. **High Churn Risk Customers**: 2,402 Customers (23.5% of active base)
-  3. **Total Retail Deposit Balance**: ₹1,365.42 Cr
-  4. **Deposit Balance at Risk**: ₹337.89 Cr (24.7% of portfolio liabilities)
-  5. **Average CSAT**: 3.73 / 5.00
+  2. **High Churn Risk Customers**: 2,402 Customers (23.55% of active base)
+  3. **Total Retail Deposit Balance**: ₹131.09 Cr
+  4. **Deposit Balance at Risk**: ₹67.33 Cr (51.37% of portfolio liabilities)
+  5. **Average CSAT**: 3.72 / 5.00
   6. **Data Confidence Impaired**: 1,214 Customers (identities with pending KYC or zero activity)
 
 * **Visual 1.1: Customer Distribution by Risk Band (Donut Chart)**
@@ -60,7 +60,7 @@ Designed for the **Executive Committee (ExCo)** and **Head of Retail Banking**.
 * **Visual 1.2: Balance at Risk by Customer Segment (Horizontal Clustered Bar)**
   - *Y-Axis*: Segment (Wealth, Privileged, Mass Retail)
   - *X-Axis*: Total Balance (₹ Cr) vs Balance at Risk (₹ Cr)
-  - *Insight*: Wealth segment accounts for 48% of total balance at risk despite being smaller in headcount.
+  - *Insight*: Wealth segment accounts for 59.0% of total balance at risk (₹39.73 Cr out of ₹67.33 Cr at risk; 61.0% of Wealth deposits) despite being smaller in headcount.
 
 * **Visual 1.3: Outflow Intensity vs Silent Churn Risk (Bubble Scatter Plot)**
   - *X-Axis*: Dim 2 Outflow Score (0–25)

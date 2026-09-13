@@ -101,7 +101,7 @@ def build_final_checklist():
             "Status": "COMPLETE",
             "Evidence File": "customer_risk_summary.xlsx",
             "Evidence Location": "output/customer_risk_scores.csv & customer_risk_summary.xlsx",
-            "Manual Action Required": "None. 2,402 customers scored High/Very High (₹337.89 Cr exposed).",
+            "Manual Action Required": "None. 2,402 customers scored High/Very High (₹67.33 Cr exposed).",
             "Priority": "P1 - Critical"
         },
         {
@@ -142,9 +142,9 @@ def build_final_checklist():
         {
             "Item": "Executive Presentation Deck (.pptx)",
             "Status": "COMPLETE",
-            "Evidence File": "Apex_Retail_Bank_Executive_Deck.pptx",
-            "Evidence Location": "output/Apex_Retail_Bank_Executive_Deck.pptx & docs/09_executive_story.md",
-            "Manual Action Required": "Open in PowerPoint to review slides and presenter notes.",
+            "Evidence File": "Apex_Retail_Bank_Executive_Presentation.pptx",
+            "Evidence Location": "output/Apex_Retail_Bank_Executive_Presentation.pptx & docs/09_executive_story.md",
+            "Manual Action Required": "Open in PowerPoint to review 14 slides and presenter notes.",
             "Priority": "P1 - Critical"
         },
         # Phase 10
@@ -187,9 +187,9 @@ def build_final_checklist():
                 "Step #": "1",
                 "Action": "Review PowerPoint Presentation",
                 "Tool": "Microsoft PowerPoint",
-                "Target File": "output/Apex_Retail_Bank_Executive_Deck.pptx",
+                "Target File": "output/Apex_Retail_Bank_Executive_Presentation.pptx",
                 "Est. Time": "5 minutes",
-                "Description": "Open the deck, review the 12 slides and presenter notes before executive delivery."
+                "Description": "Open the deck, review the 14 slides and presenter notes before executive delivery."
             },
             {
                 "Step #": "2",

@@ -34,5 +34,5 @@ Following the Phase 10 Professor-Level audit, all automated checks and data reco
 - **Deliverable 4 (Dashboard & Presentation)**:
   - Power BI-ready star schema datasets saved in Parquet & CSV.
   - 30+ verified DAX measures in `measures.dax`.
-  - 12-slide executive deck in `output/Apex_Retail_Bank_Executive_Deck.pptx` with complete speaker notes.
+  - 14-slide executive deck in `output/Apex_Retail_Bank_Executive_Deck.pptx` (and `Apex_Retail_Bank_Executive_Presentation.pptx`) with complete speaker notes.
   - Full financial reconciliation in `dashboard_validation.xlsx`.
