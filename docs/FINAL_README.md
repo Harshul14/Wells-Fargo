@@ -27,7 +27,8 @@ APEX_RETAIL_BANK/
 │   └── quarantine/            <- 13 CSV defect extracts isolated from production
 │
 ├── output/
-│   ├── Apex_Retail_Bank_Executive_Deck.pptx   <- 12-Slide Executive Deck with Speaker Notes
+│   ├── Apex_Retail_Bank_Executive_Presentation.pptx <- 14-Slide Widescreen Presentation
+│   ├── Apex_Retail_Bank_Executive_Deck.pptx         <- Dual-saved presentation copy
 │   ├── business_glossary.xlsx                <- 20 Enterprise Banking Fields
 │   ├── customer_360_summary.xlsx             <- Reconciliation & Domain Metrics
 │   ├── customer_risk_scores.csv              <- 10,200 Customer Risk Scoring Registry

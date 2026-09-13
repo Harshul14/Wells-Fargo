@@ -10,6 +10,88 @@ All requirements specified in [`Apex_Retail_Bank_Final_Student_Workshop_Guide.md
 
 ---
 
+## 📋 What to Submit: Deliverable-by-Deliverable Requirements
+*(According to [`Apex_Retail_Bank_Final_Student_Workshop_Guide.md`](Apex_Retail_Bank_Final_Student_Workshop_Guide.md) Sections 6–9 and Section 12)*
+
+The workshop guide outlines **4 Core Evaluated Deliverables (100 Points Total)**. Below is exactly what the prompt asks you to submit for each, alongside the ready files created in this workspace:
+
+```
+┌───────────────────────────────────────────────────────────────────────────────────────────┐
+│                      APEX RETAIL BANK — FINAL SUBMISSION AT A GLANCE                      │
+├────────────────────────────┬─────────────────────────────┬────────────────────────────────┤
+│ Deliverable (Guide Ref)    │ Required Submission Format  │ Primary Submission File(s)     │
+├────────────────────────────┼─────────────────────────────┼────────────────────────────────┤
+│ 1. Dataset Discovery (20%) │ Presentation slides         │ PPTX Slides 3 & 4 + Excel Logs │
+│ 2. Data Quality (30%)      │ 1–2 slides + Excel backing  │ PPTX Slide 5 + DQ Excel Workbks│
+│ 3. Data Dictionary (20%)   │ 1–2 slides + Excel Glossary │ PPTX Slide 6 + Glossary Excel  │
+│ 4. Executive Dashbd (30%)  │ BI Workbook + Presentation  │ PPTX Slides 7–14 + Excel BI    │
+└────────────────────────────┴─────────────────────────────┴────────────────────────────────┘
+```
+
+### 1. Deliverable 1 — Dataset Discovery & Profiling (20% Weight)
+* **Guide Mandate (Section 6)**:
+  > *"Submission: Data Analysis and how the datasets are linked (Presentation slides)"*
+  * Must answer: Grain of each dataset, row counts, distinct IDs, missingness, PK/FK definitions, matching rules, join inflation risks, and **18 commercial/analytical questions** (3 per dataset across Profitability, Liquidity, Service Quality, Digital Engagement, Credit Risk).
+* **What to Submit**:
+  1. **Presentation Slides**: **Slides 3 & 4** in [`output/Apex_Retail_Bank_Executive_Presentation.pptx`](output/Apex_Retail_Bank_Executive_Presentation.pptx) (Relational join model, orphan detection, join inflation prevention, and 18 commercial questions).
+  2. **Supporting Backing Excel Workbooks**:
+     - [`output/data_inventory.xlsx`](output/data_inventory.xlsx) (8 sheets: file inventory, candidate keys, relationship mappings, volume checks).
+     - [`output/data_profiling.xlsx`](output/data_profiling.xlsx) (13 sheets: column profiling, orphan foreign keys, join inflation proof, 18 questions).
+
+---
+
+### 2. Deliverable 2 — Data Quality Scorecard & Remediation (30% Weight)
+* **Guide Mandate (Section 7)**:
+  > *"Submission: Data Quality Scorecard (1 or 2 slides and an Excel for backing of your data)."*
+  * Must identify **15+ distinct candidate defects** across all 6 DAMA dimensions (Completeness, Uniqueness, Validity, Consistency, Integrity, Timeliness). Record: dataset, field/key, defect description, DQ dimension, severity, business impact, remediation/control, and automated control design.
+* **What to Submit**:
+  1. **Presentation Slide**: **Slide 5** in [`output/Apex_Retail_Bank_Executive_Presentation.pptx`](output/Apex_Retail_Bank_Executive_Presentation.pptx) (Forensic DQ scorecard, 16 defects breakdown, 13 quarantine extracts, automated gates).
+  2. **Backing Excel Workbooks**:
+     - [`output/data_quality_scorecard.xlsx`](output/data_quality_scorecard.xlsx) (DAMA 6-dimension evaluation matrix, scoring, pass/open status).
+     - [`output/data_quality_defect_log.xlsx`](output/data_quality_defect_log.xlsx) (16 genuine candidate defects with root cause, downstream impact, remediation, automated controls).
+     - [`output/entity_resolution.xlsx`](output/entity_resolution.xlsx) (RapidFuzz deduplication clustering 2,039 candidate identity pairs).
+     - [`data/quarantine/`](data/quarantine/) (13 CSV defect extracts isolating uncleaned records from production).
+
+---
+
+### 3. Deliverable 3 — Data Dictionary & Business Glossary (20% Weight)
+* **Guide Mandate (Section 8)**:
+  > *"Submission: 1 or 2 slides on explanation and the Business Glossary document in Excel."*
+  * Must standardize **15–20 critical fields** with emphasis on `Customer_Master` and `Loans`. Each entry must include: field name, dataset, business definition, technical data type, permitted values or regex validation rule, data trustworthiness rating, and assigned business steward.
+* **What to Submit**:
+  1. **Presentation Slide**: **Slide 6** in [`output/Apex_Retail_Bank_Executive_Presentation.pptx`](output/Apex_Retail_Bank_Executive_Presentation.pptx) (Enterprise glossary architecture, regex standards, steward accountability).
+  2. **Business Glossary Excel**:
+     - [`output/business_glossary.xlsx`](output/business_glossary.xlsx) (20 critical enterprise terms documented across 12 sheets: 9 Customer_Master, 4 Loans, 7 core ledgers).
+     - [`data/staging/`](data/staging/) (6 staging datasets preserving raw source columns alongside standardized fields).
+
+---
+
+### 4. Deliverable 4 — Executive Storytelling Dashboard (30% Weight)
+* **Guide Mandate (Section 9)**:
+  > *"Submission: BI workbook (Power BI or Tableau or Excel) + slide(s) executive presentation."*
+  * Must answer: *"Which customers are at risk of churning and why should bank leadership care?"*
+  * Connect high-value customers with large recent outflows; detect declining digital engagement; connect complaints/CSAT to risk; identify branch risk concentrations; recommend concrete management actions. Structure: KPI summary ➔ Risk by segment ➔ Customer risk ➔ Digital/outflow ➔ Service friction ➔ Branch hotspots ➔ Mitigation.
+* **What to Submit**:
+  1. **Executive Presentation Slides**: **Slides 7 to 14** in [`output/Apex_Retail_Bank_Executive_Presentation.pptx`](output/Apex_Retail_Bank_Executive_Presentation.pptx) (Scoring engine, portfolio exposure, triangulated early warnings, 6 archetypes, service friction flywheel, branch hotspots, action matrix, 30-60-90 day roadmap).
+  2. **BI Workbook (Excel / Power BI)**:
+     - [`output/dashboard_data.xlsx`](output/dashboard_data.xlsx) (**Complete interactive BI workbook** with Executive KPIs, Segment breakdown, Branch matrix, Top 50 customer dossier, Service friction, Digital telemetry).
+     - [`output/powerbi/measures.dax`](output/powerbi/measures.dax) (30+ production DAX formulas mapped to genuine schema).
+     - [`output/customer_risk_summary.xlsx`](output/customer_risk_summary.xlsx) (Risk scores and archetype registry for all 10,200 customers).
+     - [`output/dashboard_validation.xlsx`](output/dashboard_validation.xlsx) (9/9 automated reconciliation audit).
+
+---
+
+### 📦 Quick Checklist: The Primary Files to Upload / Submit
+If submitting via a file upload portal or email, you can submit either the entire project folder (zipped) or these primary files:
+1. 📊 **Master Presentation**: [`output/Apex_Retail_Bank_Executive_Presentation.pptx`](output/Apex_Retail_Bank_Executive_Presentation.pptx) *(or `output/Apex_Retail_Bank_Executive_Deck.pptx`)*
+2. 📈 **Interactive BI Dashboard Workbook**: [`output/dashboard_data.xlsx`](output/dashboard_data.xlsx)
+3. 📑 **Data Quality Scorecard & Defect Log**: [`output/data_quality_scorecard.xlsx`](output/data_quality_scorecard.xlsx) & [`output/data_quality_defect_log.xlsx`](output/data_quality_defect_log.xlsx)
+4. 📖 **Business Glossary Excel**: [`output/business_glossary.xlsx`](output/business_glossary.xlsx)
+5. 🔍 **Data Profiling & Inventory Workbooks**: [`output/data_profiling.xlsx`](output/data_profiling.xlsx) & [`output/data_inventory.xlsx`](output/data_inventory.xlsx)
+6. 📋 **Submission & Audit Verifications**: [`output/FINAL_SUBMISSION_CHECKLIST.xlsx`](output/FINAL_SUBMISSION_CHECKLIST.xlsx) & [`output/final_submission_audit_v2.xlsx`](output/final_submission_audit_v2.xlsx)
+
+---
+
 ## 📦 Master Submission Inventory: Exact File Paths
 
 Every deliverable required by the workshop guide is mapped below with its exact file path:
