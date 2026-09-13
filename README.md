@@ -10,6 +10,14 @@ All requirements specified in [`Apex_Retail_Bank_Final_Student_Workshop_Guide.md
 
 ---
 
+## 🚀 Final Submission Guide
+
+For complete instructions regarding the final four deliverables, required files, naming conventions, formats, folder structure, quality checks, Google Drive submission link, and submission procedure, see:
+
+👉 **[Final Submission Guide](./SUBMISSION_README.md)**
+
+---
+
 ## 📋 What to Submit: Deliverable-by-Deliverable Requirements
 *(According to [`Apex_Retail_Bank_Final_Student_Workshop_Guide.md`](Apex_Retail_Bank_Final_Student_Workshop_Guide.md) Sections 6–9 and Section 12)*
 
